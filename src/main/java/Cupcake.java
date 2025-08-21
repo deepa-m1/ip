@@ -73,6 +73,7 @@ public class Cupcake {
                         list
                         mark
                         unmark
+                        delete
                         """);
             }
         }
@@ -102,7 +103,7 @@ public class Cupcake {
                 }
             }
 
-            //using Task functions if mark/unmark
+            //using Task functions if mark/unmark/delete
             else if(txtInput.startsWith("mark")) {
                 try {
                     if (txtInput.endsWith("mark")) {
@@ -131,6 +132,26 @@ public class Cupcake {
                 } catch (CupcakeException e) {
                     System.out.println("Ooo! You must specify the task number after unmark. \n" +
                             "E.g unmark 2");
+                }
+            }
+            //if input is delete
+            else if(txtInput.startsWith("delete")) {
+                try {
+                    if (txtInput.endsWith("delete")) {
+                        throw new CupcakeException("delete incomplete");
+                    }
+
+                    int num = (txtInput.charAt(7)) - '0';
+                    if(taskList.isEmpty() || num > taskList.size()) {
+                        throw new CupcakeException("delete no specified doesn't exist");
+                    }
+                    Task removeTask = taskList.remove(num - 1);
+                    System.out.println("Okay noted!! I will DELETE this from the list.\n" +
+                            removeTask.toString());
+                    System.out.println("You now only have " + taskList.size() + " number of tasks.");
+                } catch (CupcakeException e) {
+                    System.out.println("Ooo! You must specify the task number after delete and ensure " +
+                            "the number exists. \n" + "E.g delete 1");
                 }
             }
 
