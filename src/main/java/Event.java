@@ -13,6 +13,6 @@ public class Event extends Task {
     //printing formatting
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + this.start + " to: " + this.end + ")";
+        return "[E]" + super.toString() + "(from:" + this.start + "to:" + this.end + ")";
     }
 }
