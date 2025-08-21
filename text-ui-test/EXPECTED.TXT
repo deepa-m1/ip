@@ -1,7 +1,65 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+Hello! I'm Cupcake :)
+What can I do for you?
+Okay I have added: [T][ ] borrow book
+You now have 1 task! Let's go!!!
+*****************
+Anything else I may help you with?
+1.[T][ ] borrow book
+*****************
+Anything else I may help you with?
+Okay I have added: [D][ ] return book (by: Sunday)
+You now have 2 tasks! Let's go!!!
+*****************
+Anything else I may help you with?
+Okay I have added: [E][ ] project meeting (from: Mon 2pm to: 4pm)
+You now have 3 tasks! Let's go!!!
+*****************
+Anything else I may help you with?
+1.[T][ ] borrow book
+2.[D][ ] return book (by: Sunday)
+3.[E][ ] project meeting (from: Mon 2pm to: 4pm)
+*****************
+Anything else I may help you with?
+Okay I have added: [T][ ] sign the letter
+You now have 4 tasks! Let's go!!!
+*****************
+Anything else I may help you with?
+Wow look at you go champion!! I will mark it.
+[T][X] borrow book
+*****************
+Anything else I may help you with?
+Wow look at you go champion!! I will mark it.
+[D][X] return book (by: Sunday)
+*****************
+Anything else I may help you with?
+Wow look at you go champion!! I will mark it.
+[E][X] project meeting (from: Mon 2pm to: 4pm)
+*****************
+Anything else I may help you with?
+1.[T][X] borrow book
+2.[D][X] return book (by: Sunday)
+3.[E][X] project meeting (from: Mon 2pm to: 4pm)
+4.[T][ ] sign the letter
+*****************
+Anything else I may help you with?
+Okay noted!! I will unmark it.
+[E][ ] project meeting (from: Mon 2pm to: 4pm)
+*****************
+Anything else I may help you with?
+Okay I have added: [ ] help sister
+You now have 5 tasks! Let's go!!!
+*****************
+Anything else I may help you with?
+Okay I have added: [D][ ] submission (by: 12/09)
+You now have 6 tasks! Let's go!!!
+*****************
+Anything else I may help you with?
+1.[T][X] borrow book
+2.[D][X] return book (by: Sunday)
+3.[E][ ] project meeting (from: Mon 2pm to: 4pm)
+4.[T][ ] sign the letter
+5.[ ] help sister
+6.[D][ ] submission (by: 12/09)
+*****************
+Anything else I may help you with?
+Bye. Hope to see you again real soon!
