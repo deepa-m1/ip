@@ -27,4 +27,9 @@ public class Task {
     public void unMark() {
         this.isDone = false;
     }
+
+    @Override
+    public String toString() {
+        return "[" + this.getStatus() + "] " + this.getDescription();
+    }
 }
