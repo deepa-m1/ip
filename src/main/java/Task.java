@@ -18,6 +18,11 @@ public class Task {
         return description;
     }
 
+    //setters since reading of file
+    public void setStatus(boolean val) {
+        this.isDone = val;
+    }
+
     //marking done
     public void markAsDone() {
         this.isDone = true;

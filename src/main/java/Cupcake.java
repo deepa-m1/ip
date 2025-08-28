@@ -1,6 +1,12 @@
 //to get user input to do echo
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+
+
 
 public class Cupcake {
 
@@ -81,15 +87,159 @@ public class Cupcake {
     }
 
 
+    /**
+     * Returns a File with stored user input if any
+     * If such a file doesnt exist, a new file is created and returned.
+     *
+     * @return File
+     * @throws IOException if file creation is interrupted
+     */
+    public static File getFile() throws IOException {
+
+        //creating File object
+        File f = new File("./data/Cupcake.txt");
+
+        //check if file doesn't exist
+        if(!f.exists()) {
+            //create the file
+            if(f.createNewFile()) {
+                return f;
+            } else {
+                throw new IOException("Could not create an hard-disk file to permanently store inputs");
+            }
+        }
+
+        return f;
+
+    }
+
+    /**
+     * Returns nothing
+     * given args it appends contents to that file if it exists
+     * @param text the String content to write
+     * @throws IOException if file writing is interrupted
+     */
+    private static void writeToFile(String text) throws IOException {
+        //NOTE: if file did not exist then the file will be created by FileWriter
+        System.out.println("the content b4 writing:" + text);
+        FileWriter fWriter = new FileWriter("./data/Cupcake.txt");
+        fWriter.write(text);
+        fWriter.close();
+    }
+
+    /**
+     * Returns ArrayList<Task> using the txt in File input
+     * @param filePath the String path to locate file
+     * @throws FileNotFoundException if file cannot be found at path
+     */
+    private static ArrayList<Task> getFileContent(String filePath) throws FileNotFoundException {
+        File myFile = new File(filePath);
+        ArrayList<Task> taskList = new ArrayList<>();
+
+        //create a Scanner whereby source is our file
+        Scanner s = new Scanner(myFile);
+        while(s.hasNext()) {
+            String currLine = s.nextLine();
+            //note currLine wld be like [T][ ] taskDescp, we only want to pass in taskDescp
+            //need to extract from currLine for type, status, descp etc
+            //currLine is roughly [T][ ] descp
+            char type = currLine.charAt(1);
+            char status = currLine.charAt(4);
+            String info = currLine.substring(7);
+
+            //issue is if to-do task i only have descp, if deadline i have by & so on
+            //thus I need to break down string based on type
+            Task currTask;
+            switch(type) {
+                case 'T':
+                    //To-Do task then substring is just description
+                    currTask = new ToDo(info);
+                    break;
+
+                case 'D':
+                    //Deadline task so must split substring info
+                    String[] descpAndBy = info.split("\\(by:",2);
+                    String descpD = descpAndBy[0];
+                    String lastPart = descpAndBy[1];
+                    String[] byAndBracket = lastPart.split("\\)",2);
+                    String by = byAndBracket[0];
+                    currTask = new Deadline(descpD,by);
+                    break;
+
+                case 'E':
+                    //Event task so substring has start and end time
+                    String[] descpAndDuration = info.split("\\(from:", 2);
+                    String descpE = descpAndDuration[0];
+                    String duration = descpAndDuration[1];
+                    String[] fromAndToBracket = duration.split("to:",2);
+                    String start = fromAndToBracket[0];
+                    String endWithBracket = fromAndToBracket[1];
+                    String[] endPart = endWithBracket.split("\\)",2);
+                    String end = endPart[0];
+                    currTask = new Event(descpE, start, end);
+                    break;
+
+                default:
+                    throw new IllegalStateException("Unexpected value: " + type);
+            }
+
+            //set status of task
+            if(status=='X') {
+                currTask.setStatus(true);
+
+            }
+
+            //time to add currTask to taskList
+            taskList.add(currTask);
+
+        }
+
+        return taskList;
+
+    }
+
+    /**
+     * Returns formatted String of all currently inputted tasks
+     * @param taskList which is ArrayList of all the inputted tasks in this session
+     */
+    public String currTaskListStr(ArrayList<Task> taskList) {
+        String str = "";
+        for(int i = 0; i < taskList.size(); i++) {
+            int p = 1 + i;
+            Task currtask = taskList.get(i);
+            str = str.concat(currtask.toString() + "\n");
+        }
+
+        return str;
+    }
 
     public static void main(String[] args) {
+        Cupcake session = new Cupcake();
         //asking for user's input with scanner object
         Scanner askInput = new Scanner(System.in);
-        System.out.println("Hello! I'm Cupcake :)\n" + "What can I do for you?");
+        System.out.println("Hello! I'm Cupcake :)" );
+
+        ArrayList<Task> taskList = new ArrayList<>();
+        File storedFile;
+        //getting the stored hardisk file
+        try {
+            storedFile = getFile();
+
+            //read the file content as ArrayList & append it to taskList
+            taskList.addAll(getFileContent(storedFile.getPath()));
+            System.out.println("Welcome back! What can I do for you?");
+        } catch (IOException e) {
+            System.out.println("""
+                            Hey! If you are an new user, ignore this message!\s
+                            -->Note that I could not access any previous tasks you inputted.\s
+                               But you can still continue using me!\s
+                            """
+                    );
+        }
 
         //storing the actual input into a task array list
         String txtInput = askInput.nextLine();
-        ArrayList<Task> taskList = new ArrayList<>();
+
 
         //while the userInput is not Bye we just print as it is
         while(!(txtInput.equals("bye") || txtInput.equals("Bye") || txtInput.equals("BYE"))) {
@@ -181,6 +331,13 @@ public class Cupcake {
 
         }
 
+        //since user input is Bye, write to storedFile new inputs
+        try {
+            String content = session.currTaskListStr(taskList);
+            writeToFile(content);
+        } catch (IOException e) {
+            System.out.println("Do note that I am unable to store your task inputs for future retrieval!");
+        }
         System.out.println("Bye. Hope to see you again real soon!");
 
     }
