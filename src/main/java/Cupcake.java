@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 
@@ -42,8 +44,8 @@ public class Cupcake {
                 String due = descpAndDue[1];
                 taskInput = new Deadline(descp, due);
             } catch (CupcakeException e) {
-                System.out.println("Welp!! You must specify a message and due date for Deadline!\n" +
-                        "E.g deadline proj submission /by Sunday");
+                System.out.println("Welp!! You must specify a message and due date & time for Deadline!\n" +
+                        "E.g deadline proj submission /by 2025-09-01 1800");
             }
         }
 
@@ -63,7 +65,7 @@ public class Cupcake {
                 taskInput = new Event(descp, start, end);
             } catch (CupcakeException e) {
                 System.out.println("Welp!! You must specify a message, start date and end date for Event!\n" +
-                        "E.g event splashdown meeting /from 27/08 /to Sunday");
+                        "E.g event splashdown meeting /from 2025-08-27 1700 /to 2025-09-23 1500");
             }
         } else {
             //for any other start command, we shall not bother
@@ -121,7 +123,7 @@ public class Cupcake {
      */
     private static void writeToFile(String text) throws IOException {
         //NOTE: if file did not exist then the file will be created by FileWriter
-        System.out.println("the content b4 writing:" + text);
+        System.out.println("The content that will be written:\n" + text);
         FileWriter fWriter = new FileWriter("./data/Cupcake.txt");
         fWriter.write(text);
         fWriter.close();
@@ -163,7 +165,10 @@ public class Cupcake {
                     String lastPart = descpAndBy[1];
                     String[] byAndBracket = lastPart.split("\\)",2);
                     String by = byAndBracket[0];
-                    currTask = new Deadline(descpD,by);
+
+                    //we need to format back the dateTime
+                    DateTimeFormatter expectedFormat = DateTimeFormatter.ofPattern("MMM d yyyy HH:mm");
+                    currTask = new Deadline(descpD, by, expectedFormat);
                     break;
 
                 case 'E':
@@ -176,7 +181,10 @@ public class Cupcake {
                     String endWithBracket = fromAndToBracket[1];
                     String[] endPart = endWithBracket.split("\\)",2);
                     String end = endPart[0];
-                    currTask = new Event(descpE, start, end);
+
+                    //we need to format back the dateTime
+                    DateTimeFormatter expectedFormatE = DateTimeFormatter.ofPattern("MMM d yyyy HH:mm");
+                    currTask = new Event(descpE, start, end, expectedFormatE);
                     break;
 
                 default:
