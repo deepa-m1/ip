@@ -1,4 +1,4 @@
-package duke.ui;//to get user input to do echo
+package cupcake.ui;//to get user input to do echo
 import java.io.FileNotFoundException;
 import java.io.IOException;
 

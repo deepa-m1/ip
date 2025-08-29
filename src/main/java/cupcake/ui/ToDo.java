@@ -1,4 +1,4 @@
-package duke.ui;
+package cupcake.ui;
 
 public class ToDo extends Task {
     //wld inherit description, isDone since protected & all public methods

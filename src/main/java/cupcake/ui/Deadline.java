@@ -1,4 +1,4 @@
-package duke.ui;
+package cupcake.ui;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

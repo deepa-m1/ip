@@ -1,4 +1,4 @@
-package duke.ui;
+package cupcake.ui;
 
 public class Parser {
     //interpreting user commands

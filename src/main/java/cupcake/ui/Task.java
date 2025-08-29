@@ -1,4 +1,4 @@
-package duke.ui;
+package cupcake.ui;
 
 public class Task {
     //the characteristics of a duke.ui.Task -fields

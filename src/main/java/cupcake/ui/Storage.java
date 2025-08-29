@@ -1,4 +1,4 @@
-package duke.ui;
+package cupcake.ui;
 
 import java.io.IOException;
 import java.util.Scanner;
