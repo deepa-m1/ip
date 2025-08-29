@@ -1,34 +1,35 @@
 //to get user input to do echo
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
 
 
 public class Cupcake {
     //fields
     private Storage storage;
+    private TaskList tasks;
+    private Ui ui;
 
+    //constructor
+    public Cupcake(String filePath) {
+        ui = new Ui();
+        storage = new Storage(filePath);
 
-    public static void main(String[] args) {
+        try{
+          tasks = new TaskList(storage.getFileContent(filePath));
+          ui.printWelcomeBack();
+        } catch (FileNotFoundException e) {
+            ui.printFileRetrieveError();
+            tasks = new TaskList();
+        }
+    }
 
-        Ui userInterface = new Ui();
+    public void run() {
+        //does the interface situation
 
         //printing name
-        Ui.intro();
-
-        TaskList tasks = new TaskList();
-        Storage storedFile = new Storage("./data/Cupcake.txt");
-        //getting the stored hard-disk file
-        try {
-
-            //read the file content as ArrayList & append it to taskList
-            tasks.addAllStored(storedFile.getFileContent(storedFile.getFilePath()));
-            Ui.printWelcomeBack();
-        } catch (IOException e) {
-            Ui.printFileRetrieveError();
-        }
-
+        ui.intro();
         //storing the actual input into a task array list
-        String txtInput = userInterface.getInput();
+        String txtInput = ui.getInput();
 
         //while the userInput is not Bye we just print as it is
         while (!(txtInput.equals("bye") || txtInput.equals("Bye") || txtInput.equals("BYE"))) {
@@ -47,7 +48,7 @@ public class Cupcake {
                         num = parseObj.getNumber();
                         tasks.mark(num);
                     } catch (CupcakeException e) {
-                        userInterface.printNumberError();
+                        ui.printNumberError();
                     }
                     break;
 
@@ -56,7 +57,7 @@ public class Cupcake {
                         num = parseObj.getNumber();
                         tasks.unmark(num);
                     } catch (CupcakeException e) {
-                        userInterface.printNumberError();
+                        ui.printNumberError();
                     }
                     break;
 
@@ -65,24 +66,24 @@ public class Cupcake {
                         num = parseObj.getNumber();
                         tasks.delete(num);
                     } catch (CupcakeException e) {
-                        userInterface.printNumberError();
+                        ui.printNumberError();
                     }
                     break;
 
                 default:
-                    //its a task word
+                    //it's a task word
                     Task taskInput = parseObj.getTask();
                     if (!taskInput.getDescription().equals("empty")) {
                         //coz if empty it means I went through throwing exceptions path
                         //if not empty then gd I actually had meaningful commands
                         tasks.add(taskInput);
-                        userInterface.printSuccesfullyAdded(taskInput, tasks.size());
+                        ui.printSuccesfullyAdded(taskInput, tasks.size());
                     }
             }
 
             //prompt for nxt new input
-            userInterface.formattedAsk();
-            txtInput = userInterface.getInput();
+            ui.formattedAsk();
+            txtInput = ui.getInput();
 
 
         }
@@ -90,12 +91,16 @@ public class Cupcake {
         //since user input is Bye, write to storedFile new inputs
         try {
             String content = tasks.currTaskListStr();
-            storedFile.writeToFile(content);
+            storage.writeToFile(content);
         } catch (IOException e) {
-            Ui.printCannotSaveFile();
+            ui.printCannotSaveFile();
         }
-        userInterface.printBye();
+        ui.printBye();
+    }
 
+
+    public static void main(String[] args) {
+        new Cupcake("./data/Cupcake.txt").run();
     }
 
 }

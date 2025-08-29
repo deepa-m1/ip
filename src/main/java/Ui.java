@@ -17,17 +17,17 @@ public class Ui  {
     }
 
     //print name
-    public static void intro() {
+    public void intro() {
         System.out.println("Hello! I'm Cupcake :)");
     }
 
     //print to Welcome user if file loaded- static coz doenst depend on Ui
-    public static void printWelcomeBack() {
+    public void printWelcomeBack() {
         System.out.println("Welcome back! What can I do for you?");
     }
 
     //print for file cannot be retrieved
-    public static void printFileRetrieveError() {
+    public void printFileRetrieveError() {
         System.out.println("""
                     Hey! If you are an new user, ignore this message!\s
                     -->Note that I could not access any previous tasks you inputted.\s
@@ -37,7 +37,7 @@ public class Ui  {
     }
 
     //print for file cannot store new data
-    public static void printCannotSaveFile() {
+    public void printCannotSaveFile() {
         System.out.println("Do note that I am unable to store your task inputs for future retrieval!");
     }
 
