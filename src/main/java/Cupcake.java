@@ -1,7 +1,6 @@
 //to get user input to do echo
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 
 public class Cupcake {
@@ -84,36 +83,20 @@ public class Cupcake {
         return taskInput;
     }
 
-    /**
-     * Returns formatted String of all currently inputted tasks
-     * @param taskList which is ArrayList of all the inputted tasks in this session
-     */
-    public String currTaskListStr(ArrayList<Task> taskList) {
-        String str = "";
-        for(int i = 0; i < taskList.size(); i++) {
-            int p = 1 + i;
-            Task currtask = taskList.get(i);
-            str = str.concat(currtask.toString() + "\n");
-        }
-
-        return str;
-    }
-
 
 
     public static void main(String[] args) {
-        Cupcake session = new Cupcake();
         //asking for user's input with scanner object
         Scanner askInput = new Scanner(System.in);
         System.out.println("Hello! I'm Cupcake :)" );
 
-        ArrayList<Task> taskList = new ArrayList<>();
+        TaskList tasks = new TaskList();
         Storage storedFile = new Storage("./data/Cupcake.txt");
         //getting the stored hardisk file
         try {
 
             //read the file content as ArrayList & append it to taskList
-            taskList.addAll(storedFile.getFileContent(storedFile.getFilePath()));
+            tasks.addAllStored(storedFile.getFileContent(storedFile.getFilePath()));
             System.out.println("Welcome back! What can I do for you?");
         } catch (IOException e) {
             System.out.println("""
@@ -133,11 +116,7 @@ public class Cupcake {
 
             //if input was list then printing instructions
             if(txtInput.equals("list")) {
-                for(int i = 0; i < taskList.size(); i++) {
-                    int p = 1 + i;
-                    Task currtask = taskList.get(i);
-                    System.out.println(p + "." + currtask.toString());
-                }
+                tasks.list();
             }
 
             //using Task functions if mark/unmark/delete
@@ -147,10 +126,7 @@ public class Cupcake {
                         throw new CupcakeException("mark incomplete");
                     }
                     int num = (txtInput.charAt(5)) - '0';
-                    Task markTask = taskList.get(num - 1);
-                    markTask.markAsDone();
-                    System.out.println("Wow look at you go champion!! I will mark it.\n" +
-                            markTask.toString());
+                    tasks.mark(num);
                 } catch (CupcakeException e) {
                     System.out.println("Ooo! You must specify the task number after mark. \n" +
                             "E.g mark 2");
@@ -162,10 +138,7 @@ public class Cupcake {
                         throw new CupcakeException("unmark incomplete");
                     }
                     int num = (txtInput.charAt(7)) - '0';
-                    Task unmarkTask = taskList.get(num - 1);
-                    unmarkTask.unMark();
-                    System.out.println("Okay noted!! I will unmark it.\n" +
-                            unmarkTask.toString());
+                    tasks.unmark(num);
                 } catch (CupcakeException e) {
                     System.out.println("Ooo! You must specify the task number after unmark. \n" +
                             "E.g unmark 2");
@@ -179,13 +152,7 @@ public class Cupcake {
                     }
 
                     int num = (txtInput.charAt(7)) - '0';
-                    if(taskList.isEmpty() || num > taskList.size()) {
-                        throw new CupcakeException("delete no specified doesn't exist");
-                    }
-                    Task removeTask = taskList.remove(num - 1);
-                    System.out.println("Okay noted!! I will DELETE this from the list.\n" +
-                            removeTask.toString());
-                    System.out.println("You now only have " + taskList.size() + " number of tasks.");
+                    tasks.delete(num);
                 } catch (CupcakeException e) {
                     System.out.println("Ooo! You must specify the task number after delete and ensure " +
                             "the number exists. \n" + "E.g delete 1");
@@ -197,14 +164,14 @@ public class Cupcake {
                 Task taskInput = getTask(txtInput);
                 if(!taskInput.getDescription().equals("empty")) {
                     //coz if empty it means I went through throwing exceptions path
-                    //if not empty then gd i actually had meaningful commands
-                    taskList.add(taskInput);
+                    //if not empty then gd I actually had meaningful commands
+                    tasks.add(taskInput);
                     System.out.println("Okay I have added: " + taskInput.toString());
 
-                    if(taskList.size()==1) {
+                    if(tasks.size()==1) {
                         System.out.println("You now have 1 task! Let's go!!!");
                     } else {
-                        System.out.println("You now have " + taskList.size() + " tasks! Let's go!!!");
+                        System.out.println("You now have " + tasks.size() + " tasks! Let's go!!!");
                     }
                 }
 
@@ -220,7 +187,7 @@ public class Cupcake {
 
         //since user input is Bye, write to storedFile new inputs
         try {
-            String content = session.currTaskListStr(taskList);
+            String content = tasks.currTaskListStr();
             storedFile.writeToFile(content);
         } catch (IOException e) {
             System.out.println("Do note that I am unable to store your task inputs for future retrieval!");
