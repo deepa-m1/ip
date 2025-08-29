@@ -12,9 +12,14 @@ public class Storage {
     //deals with loading tasks from the file and saving tasks in file
 
     //fields
+    /** The path to the Hard-Disk file where we store user tasks*/
     private final String filePath;
 
-    //constructor
+    /**
+     * Creates new Storage object.
+     *
+     * @param filePath path to Hard-Disk file containing previous run's user tasks.
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
     }
@@ -25,10 +30,11 @@ public class Storage {
     }
 
     /**
-     * Returns nothing
-     * given args it appends contents to that file if it exists
-     * @param text the String content to write
-     * @throws IOException if file writing is interrupted
+     * Writes the task's string format to the Hard-Disk file.
+     * If Hard-Disk file does not exist then it is created.
+     *
+     * @param text String task content to write.
+     * @throws IOException if file writing is interrupted.
      */
     public void writeToFile(String text) throws IOException {
         //NOTE: if file did not exist then the file will be created by FileWriter
@@ -40,9 +46,10 @@ public class Storage {
 
 
     /**
-     * Returns ArrayList<duke.ui.Task> using the txt in File input
-     * @param filePath the String path to locate file
-     * @throws FileNotFoundException if file cannot be found at path
+     * Returns ArrayList<Task> by adding tasks read from Hard-Disk file.
+     *
+     * @param filePath String path to locate file.
+     * @throws FileNotFoundException if file cannot be found at path.
      */
     public ArrayList<Task> getFileContent(String filePath) throws FileNotFoundException {
         File myFile = new File(filePath);

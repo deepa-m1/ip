@@ -3,27 +3,41 @@ package cupcake.ui;
 public class Parser {
     //interpreting user commands
 
-    //fields
+    /** Text input by user*/
     String userInput;
 
-    //constructor
+    /**
+     * Creates new Parser object.
+     *
+     * @param userInput text input by user.
+     */
     public Parser(String userInput) {
         this.userInput = userInput;
     }
 
-    //getter for whole userInput
+    //getter
     public String getUserInput() {
         return this.userInput;
     }
 
-    //getKeyWord so that I know if command is list,mark, event etc
+    /**
+     * Returns the instruction command word such as list/mark.
+     *
+     * @return instruction word.
+     */
     public String getKeyWord() {
         return this.userInput.strip().split(" ", 2)[0];
     }
 
-    //return Number for like commands such as list/delete etc. where 2nd digit is number
+
+    /**
+     * Returns the index of task the instruction word (mark/unmark/delete) is to act on.
+     *
+     * @return index of task.
+     * @throws CupcakeException if mark/unmark/delete commands do not specify suitable index.
+     */
     public int getNumber() throws CupcakeException {
-        //shld handle case of not having number or number exceeding length of list
+        //should handle case of not having number or number exceeding length of list
         if(this.userInput.startsWith("mark")) {
             try {
                 if(this.userInput.endsWith("mark")) {
@@ -33,7 +47,7 @@ public class Parser {
                 String str = this.userInput.strip().split(" ", 2)[1];
                 return Integer.parseInt(str);
             } catch (CupcakeException e) {
-                //anyway gotta do try-catch print in main so i just do that in main
+                //anyway gotta do try-catch print in main, so I just do that in main
                 throw new CupcakeException("You must add the task number");
             }
 
@@ -48,7 +62,7 @@ public class Parser {
                 String str = this.userInput.strip().split(" ", 2)[1];
                 return Integer.parseInt(str);
             } catch (CupcakeException e) {
-                //anyway gotta do try-catch print in main so i just do that in main
+                //anyway gotta do try-catch print in main, so I just do that in main
                 throw new CupcakeException("You must add the task number");
             }
 
@@ -64,17 +78,25 @@ public class Parser {
                 String str = this.userInput.strip().split(" ", 2)[1];
                 return Integer.parseInt(str);
             } catch (CupcakeException e) {
-                //anyway gotta do try-catch print in main so i just do that in main
+                //anyway gotta do try-catch print in main, so I just do that in main
                 throw new CupcakeException("You must add the task number");
             }
 
         }
 
-        //if -1 returned it means it wasnt a command word but rather like a add task kind
+        //if -1 returned it means it wasn't a command word but rather like an add task kind
         return -1;
     }
 
+
     //getTask method so that I can convert String userInput into a duke.ui.Task
+
+    /**
+     * Returns a new Task object based on user input.
+     *
+     * @return Task object.
+     * @throws CupcakeException if add task keywords are incomplete.
+     */
     public Task getTask() throws CupcakeException {
         Task taskInput = new Task("empty");
         //if task type is to-do

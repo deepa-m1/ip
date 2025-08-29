@@ -8,27 +8,35 @@ public class Ui  {
     for file retrieve and succesfully added/removed msgs/prompt for new input/Bye
      */
 
-    //fields
-    private String str; //the print statements
+    /** Scanner object to get user input*/
     private static Scanner askInput;
 
 
-    //constructor: actually i dont see purpose of constructor
+    /**
+     * Creates the user interface object.
+     */
     public Ui() {
         askInput = new Scanner(System.in);
     }
 
-    //print name
+    /**
+     * Prints the name of the bot.
+     */
     public void intro() {
         System.out.println("Hello! I'm Cupcake :)");
     }
 
-    //print to Welcome user if file loaded- static coz doenst depend on duke.ui.Ui
+    /**
+     * Prints a welcome back message.
+     * Is printed if this is not the first run of the chatbot.
+     */
     public void printWelcomeBack() {
         System.out.println("Welcome back! What can I do for you?");
     }
 
-    //print for file cannot be retrieved
+    /**
+     * Prints error message stating Hard-Disk file could not be retrieved.
+     */
     public void printFileRetrieveError() {
         System.out.println("""
                     Hey! If you are an new user, ignore this message!\s
@@ -38,19 +46,29 @@ public class Ui  {
         );
     }
 
-    //print for file cannot store new data
+    /**
+     * Prints error message stating cannot write to Hard Disk file.
+     */
     public void printCannotSaveFile() {
         System.out.println("Do note that I am unable to store your task inputs for future retrieval!");
     }
 
-    //print for number missing in instruction commands
+    /**
+     * Prints error message stating task index was not specified after commands like mark/unmark/delete.
+     */
     public void printNumberError() {
         System.out.println("Ooo! You must specify the task number after command. \n" +
                 "E.g mark 2 \n" + "E.g delete 3 \n" + "E.g unmark 2");
     }
 
-    //print succesful task added msg
-    public void printSuccesfullyAdded(Task task, int totalTasks) {
+    /**
+     * Prints successful message that task could be added into TaskList.
+     * Prints the number of total tasks inside the list of tasks .
+     *
+     * @param task Task object that was successfully added into ArrayList of tasks.
+     * @param totalTasks Total number of tasks in ArrayList of tasks.
+     */
+    public void printSuccessfullyAdded(Task task, int totalTasks) {
         System.out.println("Okay I have added: " + task.toString());
 
         if (totalTasks == 1) {
@@ -60,18 +78,22 @@ public class Ui  {
         }
     }
 
-    //print for Bye input
+    /**
+     * Prints Bye once user inputs bye.
+     */
     public void printBye() {
         System.out.println("Bye. Hope to see you again real soon!");
     }
 
-    //to prompt for user nxt input with print
+    /**
+     * Prints prompt to ask user to indicate another command.
+     */
     public void formattedAsk() {
         System.out.println("*****************\n" + "Anything else I may help you with?");
     }
 
 
-    //to get user input
+    //getter:get userInput
     public String getInput() {
         return askInput.nextLine();
     }

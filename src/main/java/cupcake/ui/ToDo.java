@@ -2,11 +2,16 @@ package cupcake.ui;
 
 public class ToDo extends Task {
     //wld inherit description, isDone since protected & all public methods
-    //constructor
+
+    /**
+     * Creates new To-Do task
+     *
+     * @param description information on activity task
+     */
     public ToDo(String description) {
         super(description);
     }
-    //got to change the print
+
     @Override
     public String toString() {
         return "[T]" + super.toString() ;

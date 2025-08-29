@@ -1,26 +1,34 @@
 package cupcake.ui;
 
 public class Task {
-    //the characteristics of a duke.ui.Task -fields
+    //the characteristics of a Task -fields
+
+    /** The information about the task activity*/
     protected String description;
+    /** The status of the task completion*/
     protected boolean isDone;
 
-    //constructor
+    /**
+     * Creates new Task object.
+     *
+     * @param description information about taks activity.
+     */
     public Task(String description) {
         this.description = description;
         this.isDone = false;
     }
 
-    //getters since protected fields
+    //getter:status
     public String getStatus() {
         return (isDone ? "X" : " ");
     }
 
+    //getter:description
     public String getDescription() {
         return description;
     }
 
-    //setters since reading of file
+    //setters:sets status since reading of file
     public void setStatus(boolean val) {
         this.isDone = val;
     }

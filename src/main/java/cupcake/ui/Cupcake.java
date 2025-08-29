@@ -4,12 +4,20 @@ import java.io.IOException;
 
 
 public class Cupcake {
-    //fields
+    /** Hard-disk file is stored in Storage */
     private Storage storage;
+    /** ArrayList<Task> of all the tasks user has added*/
     private TaskList tasks;
+    /** the user interface*/
     private Ui ui;
 
-    //constructor
+    /**
+     * Creates new Cupcake object.
+     * Creates new Ui and Storage objects within.
+     * Creates new TaskList object by passing in storage content.
+     *
+     * @param filePath path to the stored file in Hard-disk.
+     */
     public Cupcake(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -24,6 +32,11 @@ public class Cupcake {
         }
     }
 
+    /**
+     * Writes user's tasks into Hard-disk file once program exits.
+     * If user's input was list then the tasks is printed.
+     * For other user inputs, the tasks is updated.
+     */
     public void run() {
         //does the interface situation
         //storing the actual input into a task array list
@@ -81,7 +94,7 @@ public class Cupcake {
                         //coz if empty it means I went through throwing exceptions path
                         //if not empty then gd I actually had meaningful commands
                         tasks.add(taskInput);
-                        ui.printSuccesfullyAdded(taskInput, tasks.size());
+                        ui.printSuccessfullyAdded(taskInput, tasks.size());
                     }
             }
 
@@ -102,7 +115,11 @@ public class Cupcake {
         ui.printBye();
     }
 
-
+    /**
+     * Runs the program above.
+     *
+     * @param args expected arguments.
+     */
     public static void main(String[] args) {
         new Cupcake("data/Cupcake.txt").run();
     }

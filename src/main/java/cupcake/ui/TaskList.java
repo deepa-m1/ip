@@ -6,19 +6,28 @@ public class TaskList {
     //contains the task list & can do delete etc
 
     //fields
+    /** The ArrayList containing all the task that user inputted*/
     private final ArrayList<Task> tasks;
 
-    //constructor
+    /**
+     * Creates new TaskList object.
+     *
+     * @param tasks ArrayList of task that user inputted.
+     */
     public TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
     }
 
-    //2nd constructor if I have no tasks yet
+    /**
+     * Creates new TaskList object.
+     */
     public TaskList() {
         this.tasks = new ArrayList<>();
     }
 
-    //logic of list command: just print
+    /**
+     * Prints all the task items stored in tasks.
+     */
     public void list() {
         for(int i = 0; i < this.tasks.size(); i++) {
             int p = 1 + i;
@@ -27,7 +36,12 @@ public class TaskList {
         }
     }
 
-    //logic of mark command
+    /**
+     * Sets isDone status of specified task to true.
+     *
+     * @param pos index of the specific task in the ArrayList tasks to be marked.
+     * @throws CupcakeException If pos is not valid.
+     */
     public void mark(int pos) throws CupcakeException {
         try {
             if(this.tasks.isEmpty() || pos > this.tasks.size()) {
@@ -45,7 +59,12 @@ public class TaskList {
     }
 
 
-    //logic of unmark command
+    /**
+     * Sets isDone status of specified task to false.
+     *
+     * @param pos index of the specific task in the ArrayList tasks to be marked.
+     * @throws CupcakeException If pos is not valid.
+     */
     public void unmark(int pos) throws CupcakeException {
 
         try {
@@ -63,7 +82,12 @@ public class TaskList {
     }
 
 
-    //logic of delete command: interpret which index and go there to update status
+    /**
+     * Removes the specified task from ArrayList<Task>.
+     *
+     * @param pos index of the specific task in the ArrayList tasks to be removed.
+     * @throws CupcakeException If pos is not valid.
+     */
     public void delete(int pos) throws CupcakeException {
         //I think coz easiest is just get number/pos from textInput itself
         try {
@@ -82,24 +106,39 @@ public class TaskList {
 
     }
 
-    //logic of adding a task into tasks
+    /**
+     * Adds the Task into the ArrayList tasks.
+     *
+     * @param indTask Task object to be added to ArrayList.
+     */
     public void add(Task indTask) {
         this.tasks.add(indTask);
     }
 
-    //logic of adding All tasks in ArrayList<duke.ui.Task> to this.tasks
+
+    /**
+     * Adds ALL tasks in some ArrayList<Task> to this.tasks.
+     *
+     * @param existingTasks tasks from Stored hard Disk file.
+     */
     public void addAllStored(ArrayList<Task> existingTasks) {
         this.tasks.addAll(existingTasks);
     }
 
     //logic of returning size of duke.ui.TaskList object
+
+    /**
+     * Returns size of the this.tasks.
+     *
+     * @return size of ArrayList<Task> tasks.
+     */
     public int size() {
         return this.tasks.size();
     }
 
 
     /**
-     * Returns formatted String of all currently inputted tasks
+     * Returns formatted String of all currently inputted tasks.
      */
     public String currTaskListStr() {
         String str = "";
