@@ -1,3 +1,5 @@
+package duke.ui;
+
 public class ToDo extends Task {
     //wld inherit description, isDone since protected & all public methods
     //constructor

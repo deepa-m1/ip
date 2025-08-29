@@ -1,3 +1,5 @@
+package duke.ui;
+
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -38,7 +40,7 @@ public class Storage {
 
 
     /**
-     * Returns ArrayList<Task> using the txt in File input
+     * Returns ArrayList<duke.ui.Task> using the txt in File input
      * @param filePath the String path to locate file
      * @throws FileNotFoundException if file cannot be found at path
      */
@@ -67,7 +69,7 @@ public class Storage {
                     break;
 
                 case 'D':
-                    //Deadline task so must split substring info
+                    //duke.ui.Deadline task so must split substring info
                     String[] descpAndBy = info.split("\\(by:",2);
                     String descpD = descpAndBy[0];
                     String lastPart = descpAndBy[1];
@@ -80,7 +82,7 @@ public class Storage {
                     break;
 
                 case 'E':
-                    //Event task so substring has start and end time
+                    //duke.ui.Event task so substring has start and end time
                     String[] descpAndDuration = info.split("\\(from:", 2);
                     String descpE = descpAndDuration[0];
                     String duration = descpAndDuration[1];

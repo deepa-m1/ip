@@ -1,3 +1,5 @@
+package duke.ui;
+
 public class Parser {
     //interpreting user commands
 
@@ -72,7 +74,7 @@ public class Parser {
         return -1;
     }
 
-    //getTask method so that I can convert String userInput into a Task
+    //getTask method so that I can convert String userInput into a duke.ui.Task
     public Task getTask() {
         Task taskInput = new Task("empty");
         //if task type is to-do
@@ -105,7 +107,7 @@ public class Parser {
                 String due = descpAndDue[1];
                 taskInput = new Deadline(descp, due);
             } catch (CupcakeException e) {
-                System.out.println("Welp!! You must specify a message and due date & time for Deadline!\n" +
+                System.out.println("Welp!! You must specify a message and due date & time for duke.ui.Deadline!\n" +
                         "E.g deadline proj submission /by 2025-09-01 1800");
             }
         }
@@ -125,7 +127,7 @@ public class Parser {
                 String end = startAndEnd[1];
                 taskInput = new Event(descp, start, end);
             } catch (CupcakeException e) {
-                System.out.println("Welp!! You must specify a message, start date and end date for Event!\n" +
+                System.out.println("Welp!! You must specify a message, start date and end date for duke.ui.Event!\n" +
                         "E.g event splashdown meeting /from 2025-08-27 1700 /to 2025-09-23 1500");
             }
         } else {

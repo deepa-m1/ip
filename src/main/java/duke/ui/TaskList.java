@@ -1,3 +1,5 @@
+package duke.ui;
+
 import java.util.ArrayList;
 
 public class TaskList {
@@ -85,12 +87,12 @@ public class TaskList {
         this.tasks.add(indTask);
     }
 
-    //logic of adding All tasks in ArrayList<Task> to this.tasks
+    //logic of adding All tasks in ArrayList<duke.ui.Task> to this.tasks
     public void addAllStored(ArrayList<Task> existingTasks) {
         this.tasks.addAll(existingTasks);
     }
 
-    //logic of returning size of TaskList object
+    //logic of returning size of duke.ui.TaskList object
     public int size() {
         return this.tasks.size();
     }

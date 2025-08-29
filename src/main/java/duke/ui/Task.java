@@ -1,5 +1,7 @@
+package duke.ui;
+
 public class Task {
-    //the characteristics of a Task -fields
+    //the characteristics of a duke.ui.Task -fields
     protected String description;
     protected boolean isDone;
 

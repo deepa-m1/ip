@@ -1,4 +1,4 @@
-//to get user input to do echo
+package duke.ui;//to get user input to do echo
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -13,6 +13,7 @@ public class Cupcake {
     public Cupcake(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
+        ui.intro();
 
         try{
           tasks = new TaskList(storage.getFileContent(filePath));
@@ -25,15 +26,12 @@ public class Cupcake {
 
     public void run() {
         //does the interface situation
-
-        //printing name
-        ui.intro();
         //storing the actual input into a task array list
         String txtInput = ui.getInput();
 
         //while the userInput is not Bye we just print as it is
         while (!(txtInput.equals("bye") || txtInput.equals("Bye") || txtInput.equals("BYE"))) {
-            //Parser object
+            //duke.ui.Parser object
             Parser parseObj = new Parser(txtInput);
             String keyWord = parseObj.getKeyWord();
             int num;
@@ -100,7 +98,7 @@ public class Cupcake {
 
 
     public static void main(String[] args) {
-        new Cupcake("./data/Cupcake.txt").run();
+        new Cupcake("data/Cupcake.txt").run();
     }
 
 }

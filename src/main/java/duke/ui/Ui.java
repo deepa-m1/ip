@@ -1,3 +1,5 @@
+package duke.ui;
+
 import java.util.Scanner;
 
 public class Ui  {
@@ -21,7 +23,7 @@ public class Ui  {
         System.out.println("Hello! I'm Cupcake :)");
     }
 
-    //print to Welcome user if file loaded- static coz doenst depend on Ui
+    //print to Welcome user if file loaded- static coz doenst depend on duke.ui.Ui
     public void printWelcomeBack() {
         System.out.println("Welcome back! What can I do for you?");
     }

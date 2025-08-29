@@ -1,4 +1,4 @@
-# Cupcake User Guide
+# duke.ui.Cupcake User Guide
 
 // Update the title above to match the actual product name
 
