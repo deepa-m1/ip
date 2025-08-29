@@ -75,7 +75,7 @@ public class Parser {
     }
 
     //getTask method so that I can convert String userInput into a duke.ui.Task
-    public Task getTask() {
+    public Task getTask() throws CupcakeException {
         Task taskInput = new Task("empty");
         //if task type is to-do
         if(this.userInput.startsWith("todo")) {

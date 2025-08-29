@@ -70,7 +70,13 @@ public class Cupcake {
 
                 default:
                     //it's a task word
-                    Task taskInput = parseObj.getTask();
+                    Task taskInput = new Task("empty");
+                    try {
+                        taskInput = parseObj.getTask();
+                    } catch (CupcakeException e) {
+                        System.out.println(e.getMessage());
+                    }
+
                     if (!taskInput.getDescription().equals("empty")) {
                         //coz if empty it means I went through throwing exceptions path
                         //if not empty then gd I actually had meaningful commands
