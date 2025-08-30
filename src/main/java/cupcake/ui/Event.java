@@ -4,13 +4,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Event extends Task {
-<<<<<<< HEAD
-    //will inherit description & isDone
-    /** the start date and time of event*/
-=======
     //Will inherit description & isDone
     //Fields
->>>>>>> branch-A-CodingStandard
+    /** the start date and time of event*/
     protected LocalDateTime start;
     /** the end date and time of event*/
     protected LocalDateTime end;

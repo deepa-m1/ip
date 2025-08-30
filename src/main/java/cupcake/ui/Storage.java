@@ -30,18 +30,11 @@ public class Storage {
     }
 
     /**
-<<<<<<< HEAD
      * Writes the task's string format to the Hard-Disk file.
      * If Hard-Disk file does not exist then it is created.
      *
      * @param text String task content to write.
-=======
-     * Returns nothing.
-     * Given args it appends contents to that file if it exists.
-     *
-     * @param text the String content to write.
->>>>>>> branch-A-CodingStandard
-     * @throws IOException if file writing is interrupted.
+     * @throws IOException If file writing is interrupted.
      */
     public void writeToFile(String text) throws IOException {
         //NOTE: if file did not exist then the file will be created by FileWriter
@@ -52,15 +45,9 @@ public class Storage {
     }
 
     /**
-<<<<<<< HEAD
      * Returns ArrayList<Task> by adding tasks read from Hard-Disk file.
      *
      * @param filePath String path to locate file.
-=======
-     * Returns ArrayList<duke.ui.Task> using the txt in File input.
-     *
-     * @param filePath the String path to locate file.
->>>>>>> branch-A-CodingStandard
      * @throws FileNotFoundException if file cannot be found at path.
      */
     public ArrayList<Task> getFileContent(String filePath) throws FileNotFoundException {
