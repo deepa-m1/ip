@@ -108,4 +108,19 @@ public class TaskList {
         }
         return str;
     }
+
+    //logic of find command: look through taskList and convert each to string and take all those that match descp
+    public String find(String descp) {
+        String matchingTasksStr = "";
+        Task currTask;
+        for (int i = 0; i < this.tasks.size(); i++) {
+            currTask = this.tasks.get(i);
+            String currTaskDescp = currTask.getDescription();
+            //check if the currTask description has descp
+            if (currTaskDescp.contains(descp)) {
+                matchingTasksStr = matchingTasksStr.concat( i + "." + currTask.toString() + "\n");
+            }
+        }
+        return matchingTasksStr;
+    }
 }

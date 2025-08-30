@@ -68,6 +68,12 @@ public class Cupcake {
                     }
                     break;
 
+                case "find":
+                    String descp = txtInput.substring(5);
+                    String matchingTasksStr = tasks.find(descp);
+                    System.out.println(matchingTasksStr);
+                    break;
+
                 default:
                     //it's a task word
                     Task taskInput = new Task("empty");
