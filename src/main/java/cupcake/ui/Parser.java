@@ -38,9 +38,9 @@ public class Parser {
      */
     public int getNumber() throws CupcakeException {
         //should handle case of not having number or number exceeding length of list
-        if (this.userInput.startsWith("mark")) {
+        if (this.userInput.strip().startsWith("mark")) {
             try {
-                if (this.userInput.endsWith("mark")) {
+                if (this.userInput.trim().endsWith("mark")) {
                     throw new CupcakeException("mark incomplete");
                 }
 
@@ -53,9 +53,9 @@ public class Parser {
 
         }
 
-        if (this.userInput.startsWith("unmark")) {
+        if (this.userInput.strip().startsWith("unmark")) {
             try {
-                if (this.userInput.endsWith("unmark")) {
+                if (this.userInput.trim().endsWith("unmark")) {
                     throw new CupcakeException("unmark incomplete");
                 }
 
@@ -68,9 +68,9 @@ public class Parser {
 
         }
 
-        if (this.userInput.startsWith("delete")) {
+        if (this.userInput.strip().startsWith("delete")) {
             try {
-                if (this.userInput.endsWith("delete")) {
+                if (this.userInput.trim().endsWith("delete")) {
                     throw new CupcakeException("delete incomplete");
                 }
 
@@ -96,10 +96,10 @@ public class Parser {
     public Task getTask() throws CupcakeException {
         Task taskInput = new Task("empty");
         //if task type is to-do
-        if (this.userInput.startsWith("todo")) {
+        if (this.userInput.strip().startsWith("todo")) {
             try {
                 //detail not specified after to-do command
-                if (this.userInput.endsWith("todo")) {
+                if (this.userInput.trim().endsWith("todo")) {
                     throw new CupcakeException("todo msg incomplete");
                 }
                 String[] words = this.userInput.split(" ", 2);
@@ -113,10 +113,10 @@ public class Parser {
         }
 
         //task is deadline
-        else if (this.userInput.startsWith("deadline")) {
+        else if (this.userInput.strip().startsWith("deadline")) {
             try {
                 //detail not specified after deadline
-                if (this.userInput.endsWith("deadline")) {
+                if (this.userInput.trim().endsWith("deadline")) {
                     throw new CupcakeException("deadline instruction incomplete");
                 }
                 String[] words = this.userInput.split(" ", 2);
@@ -131,10 +131,10 @@ public class Parser {
         }
 
         //task is event
-        else if (this.userInput.startsWith("event")) {
+        else if (this.userInput.strip().startsWith("event")) {
             try {
                 //detail not specified after event
-                if (this.userInput.endsWith("event")) {
+                if (this.userInput.trim().endsWith("event")) {
                     throw new CupcakeException("event instruction incomplete");
                 }
                 String[] words = this.userInput.split(" ", 2);
@@ -179,7 +179,7 @@ public class Parser {
      */
     public String getDescp() throws CupcakeException {
         try {
-            if (this.userInput.endsWith("find")) {
+            if (this.userInput.trim().endsWith("find")) {
                 throw new CupcakeException("find incomplete");
             }
             return this.userInput.substring(5);
