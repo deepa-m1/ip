@@ -16,17 +16,17 @@ public class Parser {
         return this.userInput;
     }
 
-    //getKeyWord so that I know if command is list,mark, event etc
+    //getKeyWord so that I know if command is list, mark, event etc
     public String getKeyWord() {
         return this.userInput.strip().split(" ", 2)[0];
     }
 
-    //return Number for like commands such as list/delete etc. where 2nd digit is number
+    //return Number for commands such as list/delete etc. where 2nd word is number
     public int getNumber() throws CupcakeException {
-        //shld handle case of not having number or number exceeding length of list
-        if(this.userInput.startsWith("mark")) {
+        //should handle case of not having number or number exceeding length of list
+        if (this.userInput.startsWith("mark")) {
             try {
-                if(this.userInput.endsWith("mark")) {
+                if (this.userInput.endsWith("mark")) {
                     throw new CupcakeException("mark incomplete");
                 }
 
@@ -39,7 +39,7 @@ public class Parser {
 
         }
 
-        if(this.userInput.startsWith("unmark")) {
+        if (this.userInput.startsWith("unmark")) {
             try {
                 if (this.userInput.endsWith("unmark")) {
                     throw new CupcakeException("unmark incomplete");
@@ -48,14 +48,14 @@ public class Parser {
                 String str = this.userInput.strip().split(" ", 2)[1];
                 return Integer.parseInt(str);
             } catch (CupcakeException e) {
-                //anyway gotta do try-catch print in main so i just do that in main
+                //anyway must do try-catch print in main so i just do that in main
                 throw new CupcakeException("You must add the task number");
             }
 
         }
 
 
-        if(this.userInput.startsWith("delete")) {
+        if (this.userInput.startsWith("delete")) {
             try {
                 if (this.userInput.endsWith("delete")) {
                     throw new CupcakeException("delete incomplete");
@@ -70,7 +70,7 @@ public class Parser {
 
         }
 
-        //if -1 returned it means it wasnt a command word but rather like a add task kind
+        //if -1 returned it means it wasn't a command word but rather an add task kind
         return -1;
     }
 
@@ -78,15 +78,15 @@ public class Parser {
     public Task getTask() throws CupcakeException {
         Task taskInput = new Task("empty");
         //if task type is to-do
-        if(this.userInput.startsWith("todo")) {
+        if (this.userInput.startsWith("todo")) {
             try {
-                //dh anything else except to-do
+                //detail not specified after to-do command
                 if (this.userInput.endsWith("todo")) {
                     throw new CupcakeException("todo msg incomplete");
                 }
-                String[] Words = this.userInput.split(" ", 2);
-                String descp = Words[1];
-                //so I should have the toString method
+                String[] words = this.userInput.split(" ", 2);
+                String descp = words[1];
+                //assign taskInput
                 taskInput = new ToDo(descp);
             } catch (CupcakeException e) {
                 System.out.println("Welp!! You must specify a message for todo!\n" +
@@ -95,14 +95,14 @@ public class Parser {
         }
 
         //task is deadline
-        else if(this.userInput.startsWith("deadline")) {
+        else if (this.userInput.startsWith("deadline")) {
             try {
-                //dh anything else except deadline
+                //detail not specified after deadline
                 if (this.userInput.endsWith("deadline")) {
                     throw new CupcakeException("deadline instruction incomplete");
                 }
-                String[] Words = this.userInput.split(" ", 2);
-                String[] descpAndDue = Words[1].split("/by", 2);
+                String[] words = this.userInput.split(" ", 2);
+                String[] descpAndDue = words[1].split("/by", 2);
                 String descp = descpAndDue[0];
                 String due = descpAndDue[1];
                 taskInput = new Deadline(descp, due);
@@ -113,14 +113,14 @@ public class Parser {
         }
 
         //task is event
-        else if(this.userInput.startsWith("event")) {
+        else if (this.userInput.startsWith("event")) {
             try {
-                //dh anything else except event
+                //detail not specified after event
                 if (this.userInput.endsWith("event")) {
                     throw new CupcakeException("event instruction incomplete");
                 }
-                String[] Words = this.userInput.split(" ", 2);
-                String[] descpAndStartAndEnd = Words[1].split("/from", 2);
+                String[] words = this.userInput.split(" ", 2);
+                String[] descpAndStartAndEnd = words[1].split("/from", 2);
                 String descp = descpAndStartAndEnd[0];
                 String[] startAndEnd = descpAndStartAndEnd[1].split("/to", 2);
                 String start = startAndEnd[0];
@@ -148,6 +148,7 @@ public class Parser {
                         """);
             }
         }
+
         return taskInput;
     }
 }

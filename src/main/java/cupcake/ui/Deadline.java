@@ -14,7 +14,7 @@ public class Deadline extends Task {
         this.by = LocalDateTime.parse(by.strip(), expectedFormat);
     }
 
-    //2nd onstructor for level-8 to read file
+    //2nd constructor for level-8 to read file
     public Deadline(String description, String by, DateTimeFormatter inputFormat) {
         super(description);
         this.by = LocalDateTime.parse(by.strip(), inputFormat);

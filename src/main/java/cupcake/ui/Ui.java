@@ -4,16 +4,15 @@ import java.util.Scanner;
 
 public class Ui  {
     //deals with user interaction-so taking in user input and printing outputs
-    /*so deal with asking for input and welcome/print statements/error
-    for file retrieve and succesfully added/removed msgs/prompt for new input/Bye
+    /*so deals with asking for input and welcome/print statements/error
+    for file retrieve and successfully added/removed messages,
+    prompt for new input/Bye
      */
 
     //fields
-    private String str; //the print statements
     private static Scanner askInput;
 
-
-    //constructor: actually i dont see purpose of constructor
+    //constructor
     public Ui() {
         askInput = new Scanner(System.in);
     }
@@ -23,12 +22,12 @@ public class Ui  {
         System.out.println("Hello! I'm Cupcake :)");
     }
 
-    //print to Welcome user if file loaded- static coz doenst depend on duke.ui.Ui
+    //print to Welcome user if file loaded
     public void printWelcomeBack() {
         System.out.println("Welcome back! What can I do for you?");
     }
 
-    //print for file cannot be retrieved
+    //print for file cannot be retrieved error
     public void printFileRetrieveError() {
         System.out.println("""
                     Hey! If you are an new user, ignore this message!\s
@@ -38,7 +37,7 @@ public class Ui  {
         );
     }
 
-    //print for file cannot store new data
+    //print for file cannot store new data error
     public void printCannotSaveFile() {
         System.out.println("Do note that I am unable to store your task inputs for future retrieval!");
     }
@@ -49,8 +48,8 @@ public class Ui  {
                 "E.g mark 2 \n" + "E.g delete 3 \n" + "E.g unmark 2");
     }
 
-    //print succesful task added msg
-    public void printSuccesfullyAdded(Task task, int totalTasks) {
+    //print successfully task added msg
+    public void printSuccessfullyAdded(Task task, int totalTasks) {
         System.out.println("Okay I have added: " + task.toString());
 
         if (totalTasks == 1) {
@@ -70,11 +69,9 @@ public class Ui  {
         System.out.println("*****************\n" + "Anything else I may help you with?");
     }
 
-
     //to get user input
     public String getInput() {
         return askInput.nextLine();
     }
-
 
 }

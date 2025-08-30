@@ -4,7 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Event extends Task {
-    //will inherit description & isDone
+    //Will inherit description & isDone
+    //Fields
     protected LocalDateTime start;
     protected LocalDateTime end;
 
@@ -21,7 +22,6 @@ public class Event extends Task {
         super(description);
         this.start = LocalDateTime.parse(start.strip(), inputFormat);
         this.end = LocalDateTime.parse(end.strip(), inputFormat);
-
     }
 
     //printing formatting

@@ -20,7 +20,7 @@ public class TaskList {
 
     //logic of list command: just print
     public void list() {
-        for(int i = 0; i < this.tasks.size(); i++) {
+        for (int i = 0; i < this.tasks.size(); i++) {
             int p = 1 + i;
             Task currtask = this.tasks.get(i);
             System.out.println(p + "." + currtask.toString());
@@ -44,10 +44,8 @@ public class TaskList {
 
     }
 
-
     //logic of unmark command
     public void unmark(int pos) throws CupcakeException {
-
         try {
             if(this.tasks.isEmpty() || pos > this.tasks.size()) {
                 throw new CupcakeException("unmark no specified doesn't exist");
@@ -62,10 +60,9 @@ public class TaskList {
         }
     }
 
-
     //logic of delete command: interpret which index and go there to update status
     public void delete(int pos) throws CupcakeException {
-        //I think coz easiest is just get number/pos from textInput itself
+        //easiest is just get number/pos from textInput itself
         try {
             if(this.tasks.isEmpty() || pos > this.tasks.size()) {
                 throw new CupcakeException("delete no specified doesn't exist");
@@ -97,9 +94,8 @@ public class TaskList {
         return this.tasks.size();
     }
 
-
     /**
-     * Returns formatted String of all currently inputted tasks
+     * Returns formatted String of all currently inputted tasks.
      */
     public String currTaskListStr() {
         String str = "";
@@ -108,4 +104,5 @@ public class TaskList {
         }
         return str;
     }
+
 }
