@@ -20,6 +20,7 @@ public class Deadline extends Task {
         this.by = LocalDateTime.parse(by.strip(), expectedFormat);
     }
 
+<<<<<<< HEAD
     /**
      * Creates new Deadline object.
      *
@@ -27,6 +28,9 @@ public class Deadline extends Task {
      * @param by due date and time details.
      * @param inputFormat format of the due date and time detail being passed in.
      */
+=======
+    //2nd constructor for level-8 to read file
+>>>>>>> branch-A-CodingStandard
     public Deadline(String description, String by, DateTimeFormatter inputFormat) {
         super(description);
         this.by = LocalDateTime.parse(by.strip(), inputFormat);

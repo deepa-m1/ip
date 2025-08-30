@@ -2,8 +2,8 @@ package cupcake.ui;//to get user input to do echo
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-
 public class Cupcake {
+    //fields
     /** Hard-disk file is stored in Storage */
     private Storage storage;
     /** ArrayList<Task> of all the tasks user has added*/
@@ -23,9 +23,9 @@ public class Cupcake {
         storage = new Storage(filePath);
         ui.intro();
 
-        try{
-          tasks = new TaskList(storage.getFileContent(filePath));
-          ui.printWelcomeBack();
+        try {
+            tasks = new TaskList(storage.getFileContent(filePath));
+            ui.printWelcomeBack();
         } catch (FileNotFoundException e) {
             ui.printFileRetrieveError();
             tasks = new TaskList();
@@ -39,6 +39,7 @@ public class Cupcake {
      */
     public void run() {
         //does the interface situation
+
         //storing the actual input into a task array list
         String txtInput = ui.getInput();
 
@@ -53,7 +54,6 @@ public class Cupcake {
                 case "list":
                     tasks.list();
                     break;
-
                 case "mark":
                     try {
                         num = parseObj.getNumber();
@@ -62,7 +62,6 @@ public class Cupcake {
                         ui.printNumberError();
                     }
                     break;
-
                 case "unmark":
                     try {
                         num = parseObj.getNumber();
@@ -71,7 +70,6 @@ public class Cupcake {
                         ui.printNumberError();
                     }
                     break;
-
                 case "delete":
                     try {
                         num = parseObj.getNumber();
@@ -80,7 +78,6 @@ public class Cupcake {
                         ui.printNumberError();
                     }
                     break;
-
                 default:
                     //it's a task word
                     Task taskInput = new Task("empty");
@@ -102,7 +99,6 @@ public class Cupcake {
             ui.formattedAsk();
             txtInput = ui.getInput();
 
-
         }
 
         //since user input is Bye, write to storedFile new inputs
@@ -113,6 +109,7 @@ public class Cupcake {
             ui.printCannotSaveFile();
         }
         ui.printBye();
+
     }
 
     /**

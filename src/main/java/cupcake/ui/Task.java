@@ -1,8 +1,7 @@
 package cupcake.ui;
 
 public class Task {
-    //the characteristics of a Task -fields
-
+    //the characteristics of a duke.ui.Task: fields
     /** The information about the task activity*/
     protected String description;
     /** The status of the task completion*/
@@ -18,17 +17,17 @@ public class Task {
         this.isDone = false;
     }
 
-    //getter:status
+    //getter: status
     public String getStatus() {
         return (isDone ? "X" : " ");
     }
 
-    //getter:description
+    //getter: description
     public String getDescription() {
         return description;
     }
 
-    //setters:sets status since reading of file
+    //setters: sets status since reading of file
     public void setStatus(boolean val) {
         this.isDone = val;
     }

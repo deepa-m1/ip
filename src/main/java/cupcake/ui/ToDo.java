@@ -12,6 +12,10 @@ public class ToDo extends Task {
         super(description);
     }
 
+<<<<<<< HEAD
+=======
+    //got to change the print
+>>>>>>> branch-A-CodingStandard
     @Override
     public String toString() {
         return "[T]" + super.toString() ;

@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 public class Ui  {
     //deals with user interaction-so taking in user input and printing outputs
-    /*so deal with asking for input and welcome/print statements/error
-    for file retrieve and succesfully added/removed msgs/prompt for new input/Bye
+    /*so deals with asking for input and welcome/print statements/error
+    for file retrieve and successfully added/removed messages,
+    prompt for new input/Bye
      */
 
+    //fields
     /** Scanner object to get user input*/
     private static Scanner askInput;
 
@@ -92,11 +94,9 @@ public class Ui  {
         System.out.println("*****************\n" + "Anything else I may help you with?");
     }
 
-
     //getter:get userInput
     public String getInput() {
         return askInput.nextLine();
     }
-
 
 }
