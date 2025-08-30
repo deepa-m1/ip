@@ -69,9 +69,12 @@ public class Cupcake {
                     break;
 
                 case "find":
-                    String descp = txtInput.substring(5);
-                    String matchingTasksStr = tasks.find(descp);
-                    System.out.println(matchingTasksStr);
+                    try {
+                        String descp = parseObj.getDescp();
+                        tasks.find(descp);
+                    } catch (CupcakeException e) {
+                        ui.printDescpError();
+                    }
                     break;
 
                 default:

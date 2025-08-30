@@ -110,17 +110,25 @@ public class TaskList {
     }
 
     //logic of find command: look through taskList and convert each to string and take all those that match descp
-    public String find(String descp) {
+    public void find(String descp) throws CupcakeException {
         String matchingTasksStr = "";
-        Task currTask;
-        for (int i = 0; i < this.tasks.size(); i++) {
-            currTask = this.tasks.get(i);
-            String currTaskDescp = currTask.getDescription();
-            //check if the currTask description has descp
-            if (currTaskDescp.contains(descp)) {
-                matchingTasksStr = matchingTasksStr.concat( i + "." + currTask.toString() + "\n");
+        try {
+            if (descp.isEmpty()) {
+                throw new CupcakeException("description not specified");
             }
+            Task currTask;
+            for (int i = 0; i < this.tasks.size(); i++) {
+                currTask = this.tasks.get(i);
+                String currTaskDescp = currTask.getDescription();
+                //check if the currTask description has descp
+                if (currTaskDescp.contains(descp)) {
+                    matchingTasksStr = matchingTasksStr.concat( i + "." + currTask.toString() + "\n");
+                }
+            }
+            System.out.println(matchingTasksStr);
+        } catch (CupcakeException e) {
+            //anyway gotta do try-catch print in main so i just do that in main
+            throw new CupcakeException("You must add the description keyword");
         }
-        return matchingTasksStr;
     }
 }

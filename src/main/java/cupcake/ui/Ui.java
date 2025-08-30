@@ -76,5 +76,9 @@ public class Ui  {
         return askInput.nextLine();
     }
 
+    //print missing descp for find command
+    public void printDescpError() {
+        System.out.println("Do specify the keyword in the task descriptions!\n" + "E.g find book");
+    }
 
 }

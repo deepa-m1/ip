@@ -145,10 +145,28 @@ public class Parser {
                         mark
                         unmark
                         delete
+                        find
                         """);
             }
         }
         return taskInput;
     }
 
+    /**
+     * Returns the description keyword for find command.
+     *
+     * @return description keyword string.
+     * @throws CupcakeException If description keyword not specified.
+     */
+    public String getDescp() throws CupcakeException {
+        try {
+            if (this.userInput.endsWith("find")) {
+                throw new CupcakeException("find incomplete");
+            }
+            return this.userInput.substring(5);
+        } catch (CupcakeException e) {
+            //anyway gotta do try-catch print in main so i just do that in main
+            throw new CupcakeException("You must add the description keyword");
+        }
+    }
 }
