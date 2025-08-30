@@ -78,6 +78,14 @@ public class Cupcake {
                         ui.printNumberError();
                     }
                     break;
+                case "find":
+                    try {
+                        String descp = parseObj.getDescp();
+                        tasks.find(descp);
+                    } catch (CupcakeException e) {
+                        ui.printDescpError();
+                    }
+                    break;
                 default:
                     //it's a task word
                     Task taskInput = new Task("empty");

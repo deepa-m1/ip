@@ -1,4 +1,4 @@
 [T][ ] sleep
 [T][ ] return book
 [E][X] splashdown meeting (from:Aug 27 2025 17:00 to:Sep 23 2025 15:00)
-[D][ ] proj submission (by:Sep 1 2025 18:00)
+[T][ ] book review

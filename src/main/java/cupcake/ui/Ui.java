@@ -94,9 +94,14 @@ public class Ui  {
         System.out.println("*****************\n" + "Anything else I may help you with?");
     }
 
-    //getter:get userInput
+    //getter: get userInput
     public String getInput() {
         return askInput.nextLine();
+    }
+
+    //print missing descp for find command
+    public void printDescpError() {
+        System.out.println("Do specify the keyword in the task descriptions!\n" + "E.g find book");
     }
 
 }
