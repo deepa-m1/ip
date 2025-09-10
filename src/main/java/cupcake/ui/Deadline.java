@@ -8,6 +8,9 @@ public class Deadline extends Task {
     /** Due date and time details for the task*/
     protected LocalDateTime by;
 
+    /** the boolean to activate Java asserts*/
+    static final boolean asserts = true;
+
     /**
      * Creates new Deadline object.
      *
@@ -17,6 +20,9 @@ public class Deadline extends Task {
     public Deadline(String description, String by) {
         super(description);
         DateTimeFormatter expectedFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+        if (asserts) {
+            assert by != null : "the by info is missing";
+        }
         this.by = LocalDateTime.parse(by.strip(), expectedFormat);
     }
 

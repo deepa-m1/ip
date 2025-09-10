@@ -9,6 +9,9 @@ public class TaskList {
     /** The ArrayList containing all the task that user inputted*/
     private final ArrayList<Task> tasks;
 
+    /** the boolean to activate Java asserts*/
+    static final boolean asserts = true;
+
     /**
      * Creates new TaskList object.
      *
@@ -29,6 +32,9 @@ public class TaskList {
      * Prints all the task items stored in tasks.
      */
     public void list() {
+        if (asserts) {
+            assert !this.tasks.isEmpty();
+        }
         for (int i = 0; i < this.tasks.size(); i++) {
             int p = 1 + i;
             Task currtask = this.tasks.get(i);
