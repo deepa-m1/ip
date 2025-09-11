@@ -6,6 +6,9 @@ public class Parser {
     /** Text input by user*/
     String userInput;
 
+    /** the boolean to activate Java asserts*/
+    static final boolean asserts = true;
+
     /**
      * Creates new Parser object.
      *
@@ -29,6 +32,13 @@ public class Parser {
         return this.userInput.strip().split(" ", 2)[0];
     }
 
+    public void assertValid(String[] arr) throws AssertionError {
+        if (asserts) {
+            assert arr.length > 1;
+            assert arr[1] != null;
+            assert !arr[1].isBlank() ;
+        }
+    }
 
     /**
      * Returns the index of task the instruction word (mark/unmark/delete) is to act on.
@@ -120,9 +130,12 @@ public class Parser {
                     throw new CupcakeException("deadline instruction incomplete");
                 }
                 String[] words = this.userInput.split(" ", 2);
+                assertValid(words);
                 String[] descpAndDue = words[1].split("/by", 2);
+                assertValid(descpAndDue);
                 String descp = descpAndDue[0];
                 String due = descpAndDue[1];
+
                 taskInput = new Deadline(descp, due);
             } catch (CupcakeException e) {
                 System.out.println("Welp!! You must specify a message and due date & time for duke.ui.Deadline!\n" +
@@ -138,11 +151,15 @@ public class Parser {
                     throw new CupcakeException("event instruction incomplete");
                 }
                 String[] words = this.userInput.split(" ", 2);
+                assertValid(words);
                 String[] descpAndStartAndEnd = words[1].split("/from", 2);
+                assertValid(descpAndStartAndEnd);
                 String descp = descpAndStartAndEnd[0];
                 String[] startAndEnd = descpAndStartAndEnd[1].split("/to", 2);
+                assertValid(startAndEnd);
                 String start = startAndEnd[0];
                 String end = startAndEnd[1];
+
                 taskInput = new Event(descp, start, end);
             } catch (CupcakeException e) {
                 System.out.println("Welp!! You must specify a message, start date and end date for duke.ui.Event!\n" +

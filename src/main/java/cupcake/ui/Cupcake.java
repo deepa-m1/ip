@@ -25,6 +25,8 @@ public class Cupcake {
     /** the Ui print statements stream*/
     private PrintStream uiOutputStream = new PrintStream(uiOutputArray);
 
+    /** the boolean to activate Java asserts*/
+    static final boolean asserts = true;
 
     /**
      * Creates new Cupcake object.
@@ -78,6 +80,16 @@ public class Cupcake {
         uiOutputArray.reset();
     }
 
+    /**
+     * Checks if number input by user is valid.
+     * @param num the task number value specified by user in their input
+     * @throws AssertionError if assertion failed
+     */
+    public void assertNumber(int num) throws AssertionError {
+        if (asserts) {
+            assert num > 0 && num <= tasks.size() : "Number was invalid";
+        }
+    }
 
     /**
      * Writes user's tasks into Hard-disk file once program exits.
@@ -86,6 +98,12 @@ public class Cupcake {
      */
     public void run() {
         //does the interface situation
+
+        //assert check that userInput is not empty
+        if (asserts) {
+            assert userInput != null;
+            assert !userInput.isBlank() : "input is empty";
+        }
 
         //storing the actual input into a task array list
         //while the userInput is not Bye we just print as it is
@@ -102,6 +120,7 @@ public class Cupcake {
                 case "mark":
                     try {
                         num = parseObj.getNumber();
+                        assertNumber(num);
                         tasks.mark(num);
                     } catch (CupcakeException e) {
                         ui.printNumberError();
@@ -110,6 +129,7 @@ public class Cupcake {
                 case "unmark":
                     try {
                         num = parseObj.getNumber();
+                        assertNumber(num);
                         tasks.unmark(num);
                     } catch (CupcakeException e) {
                         ui.printNumberError();
@@ -118,6 +138,7 @@ public class Cupcake {
                 case "delete":
                     try {
                         num = parseObj.getNumber();
+                        assertNumber(num);
                         tasks.delete(num);
                     } catch (CupcakeException e) {
                         ui.printNumberError();
@@ -126,6 +147,10 @@ public class Cupcake {
                 case "find":
                     try {
                         String descp = parseObj.getDescp();
+                        if (asserts) {
+                            assert !descp.isBlank();
+                        }
+
                         tasks.find(descp);
                     } catch (CupcakeException e) {
                         ui.printDescpError();
