@@ -6,10 +6,25 @@ import java.time.format.DateTimeFormatter;
 public class Event extends Task {
     //Will inherit description & isDone
     //Fields
-    /** the start date and time of event*/
+    /** The start date and time of event */
     protected LocalDateTime start;
-    /** the end date and time of event*/
+    /** The end date and time of event */
     protected LocalDateTime end;
+    /** the boolean to activate Java asserts */
+    static final boolean asserts = false;
+
+    /**
+     * Checks if duration of Event is specified.
+     * @param begin the start date and time of the event.
+     * @param finish the end date and time of the event.
+     * @throws AssertionError If assert fails.
+     */
+    public void assertDuration(String begin, String finish) throws AssertionError {
+        if (asserts) {
+            assert begin != null || finish != null : "the time info is null";
+            assert !begin.isBlank() || !finish.isBlank() : "the time info is empty";
+        }
+    }
 
     /**
      * Creates new Event object.
@@ -21,6 +36,7 @@ public class Event extends Task {
     public Event(String description, String start, String end) {
         super(description);
         DateTimeFormatter expectedFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+        assertDuration(start,end);
         this.start = LocalDateTime.parse(start.strip(), expectedFormat);
         this.end = LocalDateTime.parse(end.strip(), expectedFormat);
     }
@@ -35,6 +51,7 @@ public class Event extends Task {
      */
     public Event(String description, String start, String end, DateTimeFormatter inputFormat) {
         super(description);
+        assertDuration(start, end);
         this.start = LocalDateTime.parse(start.strip(), inputFormat);
         this.end = LocalDateTime.parse(end.strip(), inputFormat);
     }

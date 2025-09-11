@@ -2,10 +2,12 @@ package cupcake.ui;
 
 public class Task {
     //the characteristics of a duke.ui.Task: fields
-    /** The information about the task activity*/
+    /** The information about the task activity */
     protected String description;
-    /** The status of the task completion*/
+    /** The status of the task completion */
     protected boolean isDone;
+    /** the boolean to activate Java asserts */
+    static final boolean asserts = true;
 
     /**
      * Creates new Task object.
@@ -13,6 +15,10 @@ public class Task {
      * @param description information about taks activity.
      */
     public Task(String description) {
+        if (asserts) {
+            assert description != null;
+            assert !description.isBlank();
+        }
         this.description = description;
         this.isDone = false;
     }
