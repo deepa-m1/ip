@@ -3,13 +3,13 @@ package cupcake.ui;
 import java.util.ArrayList;
 
 public class TaskList {
-    //contains the task list & can do delete etc
+    //contains the task list & can do delete commands etc
 
     //fields
-    /** The ArrayList containing all the task that user inputted*/
+    /** The ArrayList containing all the task that user inputted */
     private final ArrayList<Task> tasks;
 
-    /** the boolean to activate Java asserts*/
+    /** The boolean to activate Java asserts */
     static final boolean asserts = true;
 
     /**

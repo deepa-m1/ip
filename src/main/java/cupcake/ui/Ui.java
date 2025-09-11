@@ -10,7 +10,7 @@ public class Ui  {
      */
 
     //fields
-    /** Scanner object to get user input*/
+    /** Scanner object to get user input */
     private static Scanner askInput;
 
 

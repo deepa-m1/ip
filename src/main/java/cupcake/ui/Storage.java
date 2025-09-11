@@ -12,7 +12,7 @@ public class Storage {
     //deals with loading tasks from the file and saving tasks in file
 
     //fields
-    /** The path to the Hard-Disk file where we store user tasks*/
+    /** The path to the Hard-Disk file where we store user tasks */
     private final String filePath;
 
     /**
@@ -45,6 +45,53 @@ public class Storage {
     }
 
     /**
+     * Returns Task object for that line in file.
+     *
+     * @param type The task type.
+     * @param info The task description.
+     * @return Task object.
+     */
+    public Task interpretAndCreateTask(char type, String info) {
+        Task task;
+        switch(type) {
+            case 'T':
+                //To-Do task then substring is just description
+                task = new ToDo(info);
+                break;
+            case 'D':
+                //duke.ui.Deadline task so must split substring info
+                String[] descpAndBy = info.split("\\(by:",2);
+                String descpD = descpAndBy[0];
+                String lastPart = descpAndBy[1];
+                String[] byAndBracket = lastPart.split("\\)",2);
+                String by = byAndBracket[0];
+
+                //we need to format back the dateTime
+                DateTimeFormatter expectedFormat = DateTimeFormatter.ofPattern("MMM d yyyy HH:mm");
+                task = new Deadline(descpD, by, expectedFormat);
+                break;
+            case 'E':
+                //duke.ui.Event task so substring has start and end time
+                String[] descpAndDuration = info.split("\\(from:", 2);
+                String descpE = descpAndDuration[0];
+                String duration = descpAndDuration[1];
+                String[] fromAndToBracket = duration.split("to:",2);
+                String start = fromAndToBracket[0];
+                String endWithBracket = fromAndToBracket[1];
+                String[] endPart = endWithBracket.split("\\)",2);
+                String end = endPart[0];
+
+                //we need to format back the dateTime
+                DateTimeFormatter expectedFormatE = DateTimeFormatter.ofPattern("MMM d yyyy HH:mm");
+                task = new Event(descpE, start, end, expectedFormatE);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + type);
+        }
+        return task;
+    }
+
+    /**
      * Returns ArrayList<Task> by adding tasks read from Hard-Disk file.
      *
      * @param filePath String path to locate file.
@@ -67,41 +114,7 @@ public class Storage {
             //issue is if to-do task I only have descp, if deadline I have by & so on
             //thus I need to break down string based on type
             Task currTask;
-            switch(type) {
-            case 'T':
-                //To-Do task then substring is just description
-                currTask = new ToDo(info);
-                break;
-            case 'D':
-                //duke.ui.Deadline task so must split substring info
-                String[] descpAndBy = info.split("\\(by:",2);
-                String descpD = descpAndBy[0];
-                String lastPart = descpAndBy[1];
-                String[] byAndBracket = lastPart.split("\\)",2);
-                String by = byAndBracket[0];
-
-                //we need to format back the dateTime
-                DateTimeFormatter expectedFormat = DateTimeFormatter.ofPattern("MMM d yyyy HH:mm");
-                currTask = new Deadline(descpD, by, expectedFormat);
-                break;
-            case 'E':
-                //duke.ui.Event task so substring has start and end time
-                String[] descpAndDuration = info.split("\\(from:", 2);
-                String descpE = descpAndDuration[0];
-                String duration = descpAndDuration[1];
-                String[] fromAndToBracket = duration.split("to:",2);
-                String start = fromAndToBracket[0];
-                String endWithBracket = fromAndToBracket[1];
-                String[] endPart = endWithBracket.split("\\)",2);
-                String end = endPart[0];
-
-                //we need to format back the dateTime
-                DateTimeFormatter expectedFormatE = DateTimeFormatter.ofPattern("MMM d yyyy HH:mm");
-                currTask = new Event(descpE, start, end, expectedFormatE);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + type);
-            }
+            currTask = interpretAndCreateTask(type, info);
 
             //set status of task
             if (status =='X') {

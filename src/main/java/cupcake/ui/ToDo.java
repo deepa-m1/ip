@@ -1,7 +1,8 @@
 package cupcake.ui;
 
 public class ToDo extends Task {
-    //wld inherit description, isDone since protected & all public methods
+    /* would inherit description, isDone since protected
+     & all are public methods */
 
     /**
      * Creates new To-Do task
