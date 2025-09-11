@@ -104,4 +104,8 @@ public class Ui  {
         System.out.println("Do specify the keyword in the task descriptions!\n" + "E.g find book");
     }
 
+    public void printDuplicateCommand() {
+        System.out.println("This task already exists! You can check using the list command.");
+    }
+
 }
