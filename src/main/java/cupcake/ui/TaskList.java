@@ -178,6 +178,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Checks if the user task description inputted already exists.
+     *
+     * @param descp The task description.
+     * @return boolean true if input task is a duplicate else false.
+     */
     public boolean detectDuplicate(String descp) {
         boolean val = false;
         for (Task task : this.tasks) {
