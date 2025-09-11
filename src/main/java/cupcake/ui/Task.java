@@ -6,6 +6,7 @@ public class Task {
     protected String description;
     /** The status of the task completion */
     protected boolean isDone;
+
     /** the boolean to activate Java asserts */
     static final boolean asserts = true;
 

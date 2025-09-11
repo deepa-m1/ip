@@ -43,6 +43,7 @@ test {
 
 application {
     mainClass.set("cupcake.gui.Launcher")
+    //mainClass.set("cupcake.ui.Cupcake")
 }
 
 shadowJar {
@@ -52,7 +53,9 @@ shadowJar {
 }
 
 
-run{
+run {
     standardInput = System.in
+    enableAssertions = true
+    jvmArgs += "-ea"
 }
 

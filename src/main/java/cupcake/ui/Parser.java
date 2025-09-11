@@ -6,6 +6,7 @@ public class Parser {
     /** Text input by user */
     String userInput;
 
+
     /** The boolean to activate Java asserts */
     static final boolean asserts = true;
 

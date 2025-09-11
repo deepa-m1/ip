@@ -24,6 +24,7 @@ public class Cupcake {
     private PrintStream uiOutputStream = new PrintStream(uiOutputArray);
 
     /** The boolean to activate Java asserts */
+
     static final boolean asserts = true;
 
     /**
@@ -79,14 +80,18 @@ public class Cupcake {
 
     /**
      * Checks if number input by user is valid.
+
      * @param num the task number value specified by user in their input.
      * @throws AssertionError If assertion failed.
+
+
      */
     public void assertNumber(int num) throws AssertionError {
         if (asserts) {
             assert num > 0 && num <= tasks.size() : "Number was invalid";
         }
     }
+
 
     /**
      * Executes user's input for commands involving a number such as mark/unmark/delete.
@@ -113,7 +118,6 @@ public class Cupcake {
             ui.printNumberError();
         }
     }
-
 
     /**
      * Interprets user's text input and executes them.
@@ -186,7 +190,9 @@ public class Cupcake {
             //duke.ui.Parser object
             Parser parseObj = new Parser(userInput);
             String keyWord = parseObj.getKeyWord();
+
             interpretKeyword(keyWord, parseObj);
+
 
             //prompt for nxt new input
             ui.formattedAsk();
