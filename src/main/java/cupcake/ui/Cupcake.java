@@ -162,8 +162,13 @@ public class Cupcake {
                 if (!taskInput.getDescription().equals("empty")) {
                     //coz if empty it means I went through throwing exceptions path
                     //if not empty then gd I actually had meaningful commands
-                    tasks.add(taskInput);
-                    ui.printSuccessfullyAdded(taskInput, tasks.size());
+                    boolean isDuplicate = tasks.detectDuplicate(taskInput.getDescription());
+                    if (!isDuplicate) {
+                        tasks.add(taskInput);
+                        ui.printSuccessfullyAdded(taskInput, tasks.size());
+                    } else {
+                        ui.printDuplicateCommand();
+                    }
                 }
 
                 this.getResponse();

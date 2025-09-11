@@ -150,7 +150,12 @@ public class TaskList {
         return str;
     }
 
-    //logic of find command: look through taskList and convert each to string and take all those that match descp
+    /**
+     * Finds for all tasks matching the task description given by user.
+     *
+     * @param descp The task description.
+     * @throws CupcakeException If description is unsepcified.
+     */
     public void find(String descp) throws CupcakeException {
         String matchingTasksStr = "";
         try {
@@ -171,6 +176,24 @@ public class TaskList {
             //anyway gotta do try-catch print in main so i just do that in main
             throw new CupcakeException("You must add the description keyword");
         }
+    }
+
+    /**
+     * Checks if the user task description inputted already exists.
+     *
+     * @param descp The task description.
+     * @return boolean true if input task is a duplicate else false.
+     */
+    public boolean detectDuplicate(String descp) {
+        boolean val = false;
+        for (Task task : this.tasks) {
+            if (task.getDescription().equals(descp)) {
+                //the task is already added before
+                val = true;
+                break;
+            }
+        }
+        return val;
     }
 
 }
