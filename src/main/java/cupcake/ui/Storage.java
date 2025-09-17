@@ -59,7 +59,7 @@ public class Storage {
                 task = new ToDo(info);
                 break;
             case 'D':
-                //duke.ui.Deadline task so must split substring info
+                //cupcake.ui.Deadline task so must split substring info
                 String[] descpAndBy = info.split("\\(by:",2);
                 String descpD = descpAndBy[0];
                 String lastPart = descpAndBy[1];
@@ -71,7 +71,7 @@ public class Storage {
                 task = new Deadline(descpD, by, expectedFormat);
                 break;
             case 'E':
-                //duke.ui.Event task so substring has start and end time
+                //cupcake.ui.Event task so substring has start and end time
                 String[] descpAndDuration = info.split("\\(from:", 2);
                 String descpE = descpAndDuration[0];
                 String duration = descpAndDuration[1];

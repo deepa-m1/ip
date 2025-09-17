@@ -1,7 +1,7 @@
 package cupcake.ui;
 
 public class Task {
-    //the characteristics of a duke.ui.Task: fields
+    //the characteristics of a cupcake.ui.Task: fields
     /** The information about the task activity */
     protected String description;
     /** The status of the task completion */

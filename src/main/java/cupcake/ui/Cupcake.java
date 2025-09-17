@@ -192,7 +192,7 @@ public class Cupcake {
         //storing the actual input into a task array list
         //while the userInput is not Bye we just print as it is
         if (!(userInput.equals("bye") || userInput.equals("Bye") || userInput.equals("BYE"))) {
-            //duke.ui.Parser object
+            //cupcake.ui.Parser object
             Parser parseObj = new Parser(userInput);
             String keyWord = parseObj.getKeyWord();
 

@@ -41,7 +41,7 @@ public class ParserTest {
     public void testExceptionIsThrown() {
         try {
             new Parser("event").getTask();
-            String expectedOutput = "Welp!! You must specify a message, start date and end date for duke.ui.Event!\n" +
+            String expectedOutput = "Welp!! You must specify a message, start date and end date for Event!\n" +
                     "E.g event splashdown meeting /from 2025-08-27 1700 /to 2025-09-23 1500\n";
             assertEquals(expectedOutput, outputStream.toString());
         } catch (CupcakeException e) {
