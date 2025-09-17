@@ -1,7 +1,7 @@
 # Cupcake User Guide 🧁
 
-Screenshot of Cupcake: 
-![](/Users/deepamalika/ip/docs/Ui.png)
+Screenshot of Cupcake:
+![](Ui.png)
 
 Cupcake is YOUR everyday task manager !! Big-or-Small tasks, 
 your friendly chatbot Cupcake has got your back 🥳.
