@@ -23,8 +23,8 @@ public class MainWindow extends AnchorPane {
 
     private Cupcake cupcake;
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/user.jpg"));
-    private Image cupcakeImage = new Image(this.getClass().getResourceAsStream("/images/cupcakeBot.jpg"));
+    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/geminiEdited_User.png"));
+    private Image cupcakeImage = new Image(this.getClass().getResourceAsStream("/images/geminiConvert_CupcakeBot.png"));
 
     /** tracks the number of user inputs*/
     private int counter = 0;
