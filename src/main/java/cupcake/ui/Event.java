@@ -11,8 +11,8 @@ public class Event extends Task {
     /** The end date and time of event */
     protected LocalDateTime end;
 
-    /** the boolean to activate Java asserts */
-    static final boolean asserts = false;
+    /** the boolean to activate Java's Assert */
+    static final boolean isAsserts = false;
 
     /**
      * Checks if duration of Event is specified.
@@ -22,7 +22,7 @@ public class Event extends Task {
      * @throws AssertionError If assert fails.
      */
     public void assertDuration(String begin, String finish) throws AssertionError {
-        if (asserts) {
+        if (isAsserts) {
             assert begin != null || finish != null : "the time info is null";
             assert !begin.isBlank() || !finish.isBlank() : "the time info is empty";
         }

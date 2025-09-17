@@ -7,8 +7,8 @@ public class Parser {
     String userInput;
 
 
-    /** The boolean to activate Java asserts */
-    static final boolean asserts = true;
+    /** The boolean to activate Java's Assert */
+    static final boolean isAsserts = true;
 
     /**
      * Creates new Parser object.
@@ -40,7 +40,7 @@ public class Parser {
      * @throws AssertionError If assertions fail.
      */
     public void assertValid(String[] arr) throws AssertionError {
-        if (asserts) {
+        if (isAsserts) {
             assert arr.length > 1;
             assert arr[1] != null;
             assert !arr[1].isBlank() ;

@@ -23,9 +23,9 @@ public class Cupcake {
     /** The Ui print statements stream */
     private PrintStream uiOutputStream = new PrintStream(uiOutputArray);
 
-    /** The boolean to activate Java asserts */
+    /** The boolean to activate Java's Assert */
 
-    static final boolean asserts = true;
+    static final boolean isAsserts = true;
 
     /**
      * Creates new Cupcake object.
@@ -87,7 +87,7 @@ public class Cupcake {
 
      */
     public void assertNumber(int num) throws AssertionError {
-        if (asserts) {
+        if (isAsserts) {
             assert num > 0 && num <= tasks.size() : "Number was invalid";
         }
     }
@@ -142,7 +142,7 @@ public class Cupcake {
             case "find":
                 try {
                     String descp = obj.getDescp();
-                    if (asserts) {
+                    if (isAsserts) {
                         assert !descp.isBlank();
                     }
                     tasks.find(descp);
@@ -184,7 +184,7 @@ public class Cupcake {
         //does the interface situation
 
         //assert check that userInput is not empty
-        if (asserts) {
+        if (isAsserts) {
             assert userInput != null;
             assert !userInput.isBlank() : "input is empty";
         }

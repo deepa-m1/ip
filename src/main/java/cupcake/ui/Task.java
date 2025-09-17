@@ -7,8 +7,8 @@ public class Task {
     /** The status of the task completion */
     protected boolean isDone;
 
-    /** the boolean to activate Java asserts */
-    static final boolean asserts = true;
+    /** the boolean to activate Java's Assert */
+    static final boolean isAsserts = true;
 
     /**
      * Creates new Task object.
@@ -16,7 +16,7 @@ public class Task {
      * @param description information about taks activity.
      */
     public Task(String description) {
-        if (asserts) {
+        if (isAsserts) {
             assert description != null;
             assert !description.isBlank();
         }
