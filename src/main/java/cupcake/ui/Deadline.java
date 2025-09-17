@@ -2,6 +2,7 @@ package cupcake.ui;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Deadline extends Task {
     //will inherit string description, isDone
@@ -9,7 +10,7 @@ public class Deadline extends Task {
     protected LocalDateTime by;
 
     /** the boolean to activate Java's Assert*/
-    static final boolean isAsserts = true;
+    static final boolean isAsserts = false;
 
     /**
      * Creates new Deadline object.
@@ -17,7 +18,7 @@ public class Deadline extends Task {
      * @param description task activity information.
      * @param by due date and time details.
      */
-    public Deadline(String description, String by) {
+    public Deadline(String description, String by) throws DateTimeParseException {
         super(description);
         DateTimeFormatter expectedFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
         if (isAsserts) {

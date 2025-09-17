@@ -50,7 +50,7 @@ public class TaskList {
      */
     public void mark(int pos) throws CupcakeException {
         try {
-            if(this.tasks.isEmpty() || pos > this.tasks.size()) {
+            if(this.tasks.isEmpty() || pos > this.tasks.size() || pos < 1) {
                 throw new CupcakeException("mark no specified doesn't exist");
             }
             Task markTask = this.tasks.get(pos - 1);
@@ -73,7 +73,7 @@ public class TaskList {
      */
     public void unmark(int pos) throws CupcakeException {
         try {
-            if(this.tasks.isEmpty() || pos > this.tasks.size()) {
+            if(this.tasks.isEmpty() || pos > this.tasks.size() || pos < 1) {
                 throw new CupcakeException("unmark no specified doesn't exist");
             }
             Task unmarkTask = this.tasks.get(pos - 1);
@@ -96,7 +96,7 @@ public class TaskList {
     public void delete(int pos) throws CupcakeException {
         //easiest is just get number/pos from textInput itself
         try {
-            if(this.tasks.isEmpty() || pos > this.tasks.size()) {
+            if(this.tasks.isEmpty() || pos > this.tasks.size() || pos < 1) {
                 throw new CupcakeException("delete no specified doesn't exist");
             }
 
@@ -168,7 +168,8 @@ public class TaskList {
                 String currTaskDescp = currTask.getDescription();
                 //check if the currTask description has descp
                 if (currTaskDescp.contains(descp)) {
-                    matchingTasksStr = matchingTasksStr.concat( i + "." + currTask.toString() + "\n");
+                    int index = i + 1;
+                    matchingTasksStr = matchingTasksStr.concat( index + "." + currTask.toString() + "\n");
                 }
             }
             System.out.println(matchingTasksStr);
@@ -185,15 +186,15 @@ public class TaskList {
      * @return boolean true if input task is a duplicate else false.
      */
     public boolean detectDuplicate(String descp) {
-        boolean val = false;
+        boolean wasAlreadyAdded = false;
         for (Task task : this.tasks) {
             if (task.getDescription().equals(descp)) {
                 //the task is already added before
-                val = true;
+                wasAlreadyAdded = true;
                 break;
             }
         }
-        return val;
+        return wasAlreadyAdded;
     }
 
 }

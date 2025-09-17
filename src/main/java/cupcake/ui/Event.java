@@ -2,6 +2,7 @@ package cupcake.ui;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Event extends Task {
     //Will inherit description & isDone
@@ -35,7 +36,7 @@ public class Event extends Task {
      * @param start start date and time of event.
      * @param end end date and time of event.
      */
-    public Event(String description, String start, String end) {
+    public Event(String description, String start, String end) throws DateTimeParseException {
         super(description);
         DateTimeFormatter expectedFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
         assertDuration(start,end);

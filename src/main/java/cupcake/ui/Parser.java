@@ -1,5 +1,7 @@
 package cupcake.ui;
 
+import java.time.format.DateTimeParseException;
+
 public class Parser {
     //Parser does interpreting of user commands
 
@@ -8,7 +10,7 @@ public class Parser {
 
 
     /** The boolean to activate Java's Assert */
-    static final boolean isAsserts = true;
+    static final boolean isAsserts = false;
 
     /**
      * Creates new Parser object.
@@ -113,12 +115,19 @@ public class Parser {
             String[] descpAndDue = words[1].split("/by", 2);
             assertValid(descpAndDue);
             String descp = descpAndDue[0];
+
+            if (descpAndDue.length != 2) {
+                throw new CupcakeException("deadline instruction incomplete");
+            }
             String due = descpAndDue[1];
 
             return new Deadline(descp, due);
         } catch (CupcakeException e) {
-            System.out.println("Welp!! You must specify a message and due date & time for duke.ui.Deadline!\n" +
+            System.out.println("Welp!! You must specify a message and due date & time for Deadline!\n" +
                     "E.g deadline proj submission /by 2025-09-01 1800");
+        } catch (DateTimeParseException e) {
+            System.out.println("Unfortunately your info after /by is not following the expected format\n" +
+                    "Please adhere to this format: yyyy-MM-dd HHmm");
         }
         return new Task("empty");
     }
@@ -139,15 +148,28 @@ public class Parser {
             String[] descpAndStartAndEnd = words[1].split("/from", 2);
             assertValid(descpAndStartAndEnd);
             String descp = descpAndStartAndEnd[0];
+
+            if (descpAndStartAndEnd.length != 2) {
+                throw new CupcakeException("event instruction incomplete");
+            }
+
             String[] startAndEnd = descpAndStartAndEnd[1].split("/to", 2);
             assertValid(startAndEnd);
             String start = startAndEnd[0];
+
+            if (startAndEnd.length != 2) {
+                throw new CupcakeException("event instruction incomplete");
+            }
+
             String end = startAndEnd[1];
 
             return new Event(descp, start, end);
         } catch (CupcakeException e) {
-            System.out.println("Welp!! You must specify a message, start date and end date for duke.ui.Event!\n" +
+            System.out.println("Welp!! You must specify a message, start date and end date for Event!\n" +
                     "E.g event splashdown meeting /from 2025-08-27 1700 /to 2025-09-23 1500");
+        } catch (DateTimeParseException e) {
+            System.out.println("Unfortunately your info after /from or /to is not following the expected format\n" +
+                    "Please adhere to this format: yyyy-MM-dd HHmm");
         }
         return new Task("empty");
     }

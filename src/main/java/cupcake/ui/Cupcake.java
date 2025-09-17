@@ -25,7 +25,7 @@ public class Cupcake {
 
     /** The boolean to activate Java's Assert */
 
-    static final boolean isAsserts = true;
+    static final boolean isAsserts = false;
 
     /**
      * Creates new Cupcake object.
