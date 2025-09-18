@@ -33,7 +33,7 @@ Prerequisites: JDK 17, and the latest version of IntelliJ IDEA.
 4. After that, you can enter commands to manage your tasks (to-dos, deadlines, or events).
 
 ⚠️ Note: On startup you can type any message to activate Cupcake.  
-⚠️ Note: To **_save_** your interaction, type the `bye` command.  
+⚠️ Note: To **_save_** your interaction, you may type the `bye` command.  
 
 Example Interaction:  
 Here’s what using Cupcake looks like in the console:

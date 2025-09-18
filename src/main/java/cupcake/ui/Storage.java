@@ -36,9 +36,24 @@ public class Storage {
      * @param text String task content to write.
      * @throws IOException If file writing is interrupted.
      */
-    public void writeToFile(String text) throws IOException {
+    public void writeToFileEnd(String text) throws IOException {
         //NOTE: if file did not exist then the file will be created by FileWriter
         System.out.println("The content that will be written:\n" + text);
+        FileWriter fWriter = new FileWriter(this.filePath);
+        fWriter.write(text);
+        fWriter.close();
+    }
+
+    /**
+     * Writes the task's string format to the Hard-Disk file after
+     * every task that is updated.
+     * If Hard-Disk file does not exist then it is created.
+     *
+     * @param text String task content to write.
+     * @throws IOException If file writing is interrupted.
+     */
+    public void writeToFile(String text) throws IOException {
+        //NOTE: if file did not exist then the file will be created by FileWriter
         FileWriter fWriter = new FileWriter(this.filePath);
         fWriter.write(text);
         fWriter.close();

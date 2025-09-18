@@ -198,6 +198,13 @@ public class Cupcake {
 
             interpretKeyword(keyWord, parseObj);
 
+            //writing to file immediately
+            try {
+                String content = tasks.currTaskListStr();
+                storage.writeToFile(content);
+            } catch (IOException e) {
+                ui.printCannotSaveFile();
+            }
 
             //prompt for nxt new input
             ui.formattedAsk();
@@ -207,7 +214,7 @@ public class Cupcake {
             //since user input is Bye, write to storedFile new inputs
             try {
                 String content = tasks.currTaskListStr();
-                storage.writeToFile(content);
+                storage.writeToFileEnd(content);
             } catch (IOException e) {
                 ui.printCannotSaveFile();
             }

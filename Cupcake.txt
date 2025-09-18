@@ -1,0 +1,4 @@
+[T][ ] sleep
+[T][ ] read
+[D][ ] hw submission (by:Sep 1 2025 18:00)
+[T][X] eat

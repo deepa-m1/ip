@@ -133,7 +133,9 @@ Sample output by Cupcake will be:
 ## Feature 9: To exit and save your tasks👋
 Use `bye` command to end the session and prompt
 Cupcake to write the updated tasks into the 
-hard-drive's Cupcake.txt file. 
+hard-drive's Cupcake.txt file.   
+(Note: even without `bye` command, the chatbot has been
+updated to save every task added and modified.)
 
 For example:
 >bye
