@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
-    private Cupcake cupcake = new Cupcake("data/Cupcake.txt");
+    private Cupcake cupcake = new Cupcake("Cupcake.txt");
 
     @Override
     public void start(Stage stage) {

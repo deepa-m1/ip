@@ -130,8 +130,8 @@ Sample output by Cupcake will be:
 > ****************
 > Anything else I may help you with?
 
-## Feature 9: To exit and save 👋
-Use bye command to end the session and prompt
+## Feature 9: To exit and save your tasks👋
+Use `bye` command to end the session and prompt
 Cupcake to write the updated tasks into the 
 hard-drive's Cupcake.txt file. 
 

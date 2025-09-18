@@ -41,7 +41,7 @@ public class Ui  {
      */
     public void printFileRetrieveError() {
         System.out.println("""
-                    Hey! If you are an new user, ignore this message!\s
+                    Hey! If you are a new user, ignore this message!\s
                     -->Note that I could not access any previous tasks you inputted.\s
                        But you can still continue using me!\s
                     """

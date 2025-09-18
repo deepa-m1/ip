@@ -126,7 +126,7 @@ public class Parser {
             System.out.println("Welp!! You must specify a message and due date & time for Deadline!\n" +
                     "E.g deadline proj submission /by 2025-09-01 1800");
         } catch (DateTimeParseException e) {
-            System.out.println("Unfortunately your info after /by is not following the expected format\n" +
+            System.out.println("Unfortunately your info after /by is not following the expected format.\n" +
                     "Please adhere to this format: yyyy-MM-dd HHmm");
         }
         return new Task("empty");
@@ -168,7 +168,7 @@ public class Parser {
             System.out.println("Welp!! You must specify a message, start date and end date for Event!\n" +
                     "E.g event splashdown meeting /from 2025-08-27 1700 /to 2025-09-23 1500");
         } catch (DateTimeParseException e) {
-            System.out.println("Unfortunately your info after /from or /to is not following the expected format\n" +
+            System.out.println("Unfortunately your info after /from or /to is not following the expected format.\n" +
                     "Please adhere to this format: yyyy-MM-dd HHmm");
         }
         return new Task("empty");

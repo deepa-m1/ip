@@ -10,7 +10,7 @@ public class TaskList {
     private final ArrayList<Task> tasks;
 
     /** The boolean to activate Java isAsserts */
-    static final boolean isAsserts = true;
+    static final boolean isAsserts = false;
 
     /**
      * Creates new TaskList object.

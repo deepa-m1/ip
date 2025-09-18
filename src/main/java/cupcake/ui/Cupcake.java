@@ -222,7 +222,8 @@ public class Cupcake {
      * @param args expected arguments.
      */
     public static void main(String[] args) {
-        new Cupcake("data/Cupcake.txt").run();
+
+        new Cupcake("Cupcake.txt").run();
     }
 
 }

@@ -28,14 +28,14 @@ Prerequisites: JDK 17, and the latest version of IntelliJ IDEA.
 
 2. Right-click the module and select Run 'ip [run]', or press the Run button on the top menu.
 
-3. In the console, type any message — Cupcake will greet you.
+3. In the console, **type any message to activate Cupcake** — Cupcake will greet you.
 
 4. After that, you can enter commands to manage your tasks (to-dos, deadlines, or events).
 
-⚠️ Note: On startup you can type any message to activate Cupcake.
+⚠️ Note: On startup you can type any message to activate Cupcake.  
+⚠️ Note: To **_save_** your interaction, type the `bye` command.  
 
-Example Interaction:
-
+Example Interaction:  
 Here’s what using Cupcake looks like in the console:
 
 > hi
@@ -66,6 +66,8 @@ Cupcake supports the following commands:
 
 `delete`
 `find`
+
+`bye`
 
 ### ⚠️ Important Project Structure:
 

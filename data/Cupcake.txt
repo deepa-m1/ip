@@ -1,6 +1,0 @@
-[T][ ] sleep
-[T][ ] return book
-[E][ ] splashdown meeting (from:Aug 27 2025 17:00 to:Sep 23 2025 15:00)
-[T][ ] book review
-[T][ ] read
-[E][ ] seminar (from:Oct 1 2025 14:00 to:Oct 15 2025 13:00)
