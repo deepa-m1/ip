@@ -1,4 +1,0 @@
-[T][ ] sleep
-[T][ ] book
-[T][ ] eat
-[D][ ] hw submission (by:Sep 1 2025 18:00)
