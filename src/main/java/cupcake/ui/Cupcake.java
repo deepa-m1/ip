@@ -219,6 +219,8 @@ public class Cupcake {
                 ui.printCannotSaveFile();
             }
             ui.printBye();
+            System.out.flush();
+            System.exit(0);
         }
 
     }
